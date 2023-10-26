@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255; /* Now text will be white */
+  --background-start-rgb: 0, 0, 0; /* Start of background gradient is black */
+  --background-end-rgb: 0, 0, 0; /* End of background gradient is also black */
+  --description-color: #d3d3d3; /* For light grey color in descriptions */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  color: rgb(var(--foreground-rgb)); /* Text color is now white */
+  background: rgb(var(--background-start-rgb)); /* Background color is now black */
+}
+
+h1, h2, h5, h6 { 
+  font-weight: bold; /* Making all headers bold */
+  font-size: 48px; 
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+ /* ... existing styles ... */
+ color: #913d88;  /* Making links white */
+}
+
+a:hover {
+ /* ... existing styles ... */
+ color: #ffffff; ; /* Keeping the color change on hover */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+input[type=email], input[type=password] {
+  padding: 0.5rem; /* padding inside the input field */
+  font-size: 14px; /* font size of text in the input field */
+  width: 250px; /* width of the input field */
+  border-radius: 15px; 
+  font-weight: 600;
+  color:#913d88;
+}
+
+input[type=email], input[type=password] {
+  background-color: #ECEDF3; 
+}
+
+p {
+  margin-bottom: .5rem; /* spacing below each paragraph element */
+  color: #913d88; 
+  font-weight: 600;
+}
+
+form {
+  margin-top: 2rem; /* adjust as needed */
+}
+
+.neon-button {
+  color: black;
+  background-color: white;
+  padding: 15px 32px;
+  border: 3px solid transparent; /* initially the border is transparent */
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: calc(50% - 6px); /* deducting border width from total width */
+  margin-bottom: 4px;
+  height: 60px;
+  font-weight: 600;
+}
+
+.neon-button:hover {
+  border-color: #913d88; /* border color only visible on hover */
+}
+
+.google-signin-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  color: black;
+  background-color: white;
+  border: 3px solid transparent;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
+  height: 60px;
+  width: 330px;
+}
+
+.google-signin-button:hover {
+  border-color: #913d88; /* border color only visible on hover */
+}
+
+
+.container {
+  max-width: 1200px; /*set your desired width*/
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 100px;
+  
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  padding-bottom: 5%; /* For an aspect ratio of 16:9 */
+  overflow: hidden;
+}
+
+.section {
+  margin-bottom: 20px;
+  
+}
+
+.section-paragraph {
+  color: #913d88; /* Desired paragraph text color */
+  padding-bottom: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px; /* You can adjust this value to increase or decrease the card size */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgb(255, 255, 255);
+}
+
+.team-member img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.member-info h4,
+.member-info p {
+  margin: 0;
+}
+
+.description {
+  margin-top: 15px;
+  color: #913d88;
+  font-size: 0.875rem;
+}
+
+/* Add these styles to your existing CSS file or styles component */
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: white; /* Set your desired background color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+}
+
+

@@ -1,0 +1,11 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/(primary)/page": "app/(primary)/page.js",
+  "/api/hello/route": "app/api/hello/route.js",
+  "/(primary)/dataroom/page": "app/(primary)/dataroom/page.js",
+  "/(primary)/b1h0/page": "app/(primary)/b1h0/page.js",
+  "/(primary)/idac/page": "app/(primary)/idac/page.js",
+  "/(primary)/ipoc/page": "app/(primary)/ipoc/page.js",
+  "/(primary)/team/page": "app/(primary)/team/page.js",
+  "/(primary)/terms/page": "app/(primary)/terms/page.js"
+}
