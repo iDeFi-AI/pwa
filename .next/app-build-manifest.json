@@ -15,6 +15,56 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
+    ],
+    "/(primary)/idac/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/idac/layout.js"
+    ],
+    "/(primary)/idac/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/idac/page.js"
+    ],
+    "/(primary)/dataroom/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/dataroom/layout.js"
+    ],
+    "/(primary)/dataroom/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/dataroom/page.js"
+    ],
+    "/(primary)/b1h0/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/b1h0/layout.js"
+    ],
+    "/(primary)/b1h0/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/b1h0/page.js"
+    ],
+    "/(primary)/ipoc/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/ipoc/layout.js"
+    ],
+    "/(primary)/ipoc/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/ipoc/page.js"
+    ],
+    "/(primary)/team/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/team/page.js"
+    ],
+    "/(primary)/team/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/team/layout.js"
     ]
   }
 }

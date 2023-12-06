@@ -2,17 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Video = () => (
-  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
-    <iframe
-      allowFullScreen
-      style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", border: "none", borderRadius: "25px" }}
-      src="https://www.youtube.com/embed/9ly8VacW-qY?si=-TFXtuPL_toyLnaY"
-      frameBorder="0">
-    </iframe>
-  </div>
-);
-
 interface SectionProps {
   title: string;
   content: string;
@@ -30,12 +19,12 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
       imageAlt: 'Company Logo',
     },
     {
-      title: 'Overview of iDeFi-Ai',
+      title: 'Overview of iDeFi-AI',
       content: 'Welcome to the innovative world of iDeFi-AI, where blockchain technology and artificial intelligence converge to shape the future of decentralized finance (DeFi).',
       paragraphs: [
-        "Our vision is to revolutionize the financial landscape by harnessing the power of cutting-edge technology. Through the fusion of blockchain and artificial intelligence, we're paving the way for a more inclusive and efficient financial ecosystem.",
-        " At iDeFi-AI, we're committed to enhancing security within the DeFi space. Our innovative solutions are designed to minimize fraud, reduce risks, and provide users with a safe environment to manage their digital assets.",
-        " Join us on this exciting journey into the future of finance, where smart contracts, decentralized applications, and AI-driven insights will become the norm. Together, we're shaping the path for a more accessible and interconnected financial world."
+        'Our vision is to revolutionize the financial landscape by harnessing the power of cutting-edge technology. Through the fusion of blockchain, artificial intelligence and Quantum Technologies, we are paving the way for a more inclusive and efficient financial ecosystem.',
+        'At iDeFi-AI, we are committed to enhancing security within the DeFi space. Our innovative solutions are designed to minimize fraud, reduce risks, and provide users with a safe environment to manage their digital assets.',
+        'Join us on this exciting journey into the future of finance, where smart contracts, decentralized applications, and AI-driven insights will become the norm. Together, we are shaping the path for a more accessible and interconnected financial world.'
       ],
     },
     {
@@ -67,46 +56,17 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
       ],
     },
     {
-      title: 'Intro to Crypto',
+      title: 'Crypto Exploration',
       content: 'Unraveling the Cryptocurrency Universe',
       imageUrl: '/mapkey.jpg',
       paragraphs: [
-        "Cryptocurrency is the frontier of the digital financial landscape. It's a decentralized, blockchain-based form of money that's redefining the way we think about transactions and assets.",
-        " In this section, we'll introduce you to the core concepts and terminologies of the crypto world. Whether you're a seasoned crypto enthusiast or just starting, join us on this journey into the heart of blockchain technology.",
-      ],
-    },
-    {
-      title: 'User',
-      content: 'The Enigmatic Crypto Explorer',
-      paragraphs: [
-        "In the world of cryptocurrencies, the user is the intrepid explorer. They own and operate crypto wallets, often shrouded in anonymity. But their crypto journeys leave traces on the blockchain ledger.",
-        " Here, we delve into what it means to be a crypto user, understanding the nuances of wallet ownership, transactions, and the pursuit of financial privacy in a transparent, blockchain-driven realm.",
-      ],
-    },
-    {
-      title: 'Wallet',
-      content: 'Guardian of Your Digital Fortunes',
-      paragraphs: [
-        "A crypto wallet is your fortress in the digital realm, safeguarding your public and private keys. It's the tool that empowers you to conduct blockchain transactions, whether you're sending or receiving cryptocurrencies.",
-        " Let's explore the inner workings of crypto wallets, their role in the blockchain ecosystem, and the paramount importance of securing your keys to protect your digital assets.",
-      ],
-    },
-    {
-      title: 'Wallet Address',
-      content: 'The Identifier in the Blockchain Wilderness',
-      paragraphs: [
-        "Every crypto user has a wallet address, a cryptographic identifier that represents their public key. It's the virtual location where you send and receive transactions, and it's visible on the blockchain ledger for all to see.",
-        " Here, we demystify the concept of wallet addresses, discussing their hash functions, security implications, and their role in maintaining transparency and accountability in the blockchain network.",
-      ],
-    },
-    {
-      title: 'Address Transaction',
-      content: 'The Journey of a Crypto Transaction',
-      paragraphs: [
-        "In the world of crypto, every transaction embarks on a unique journey. It's identified by a transaction hash, a cryptographic fingerprint that distinguishes it from the vast sea of transactions.",
-        " Join us in this exploration of address transactions, where we dive into the significance of transaction IDs, their role in tracking crypto transfers, and how they contribute to risk scoring and detection in the crypto sphere.",
-      ],
-    },
+        "Cryptocurrency is reshaping the digital financial landscape through decentralization and blockchain technology. Whether you're a seasoned enthusiast or a newcomer, join us on a comprehensive journey into the heart of crypto.",
+        "Crypto User: As crypto users, we navigate the blockchain realm with wallets shrouded in anonymity. Explore the nuances of wallet ownership, transactions, and the pursuit of financial privacy in this transparent, blockchain-driven space.",
+        "Crypto Wallet: Your crypto wallet is the fortress safeguarding public and private keys, empowering blockchain transactions. Explore its role, the inner workings, and the paramount importance of securing keys to protect digital assets.",
+        "Wallet Address: Every crypto user has a wallet address, a cryptographic identifier representing their public key. Demystify wallet addresses, exploring hash functions, security implications, and their role in maintaining transparency and accountability on the blockchain.",
+        "Address Transaction: In the crypto world, each transaction embarks on a unique journey identified by a transaction hash. Join us in exploring address transactions, delving into the significance of transaction IDs, tracking crypto transfers, and their role in risk scoring and detection.",
+      ]
+    }
   ];
 
   return (
@@ -117,7 +77,7 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
             <h2>{section.title}</h2>
             <h4>{section.content}</h4>
             {index !== 0 && ( // Add this condition to exclude line break in the first section
-              <br></br>
+              <br />
             )}
             {section.title === 'Welcome to the Data Room' && ( // Check if this is the specific section
               <p>
@@ -129,9 +89,15 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
               </p>
             )}
             {section.paragraphs && (
-              <p>{section.paragraphs}</p>
+              <div>
+                {section.paragraphs.map((paragraph, pIndex) => (
+                  <p key={pIndex} className="mb-4">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             )}
-            <br></br>
+            <br />
             {section.imageUrl && (
               <div className="image-container">
                 <Image
@@ -154,13 +120,13 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
         <h2>Explore Our Key Initiatives</h2>
         <ul>
           <li>
-            <Link href="/b1h0">B1H0 - The B1ack H0rnet</Link>
+            <Link href="/b1h0">B1H0 - B1ack H0rnet</Link>
           </li>
           <li>
             <Link href="/idac">iDAC - Digital Risk Scoring</Link>
           </li>
           <li>
-            <Link href="/ai-api">AI-API - Unlocking New Realms</Link>
+            <Link href="/ipoc">POC - Initial Proof of Concepts</Link>
           </li>
         </ul>
       </div>

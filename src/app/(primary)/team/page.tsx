@@ -53,7 +53,7 @@ const TEAM: React.FC = () => {
               <h4>{member.name}</h4>
               <p>{member.role}</p>
             </div>
-            <div className="container description">
+            <div className="container team-description">
               {member.description}
             </div>
           </div>

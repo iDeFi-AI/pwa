@@ -11,7 +11,7 @@ import HeaderNavLink from '../links/HeaderNavLink';
 const menuItems = [
   { label: `B1H0`, url: `b1h0` },
   { label: `iDAC`, url: `idac` },
-  { label: `iPOC`, url: `ipoc` },
+  { label: `POC`, url: `ipoc` },
   { label: `TEAM`, url: `team` },
   { label: 'Log out', url: '/' },
 ];

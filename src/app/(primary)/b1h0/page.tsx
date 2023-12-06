@@ -40,7 +40,7 @@ const BlogPost: React.FC = () => {
       title: "Artificial Intelligence",
       intro: "The Queen Hornet",
       paragraphs: ["Central to this decentralized operation is our sophisticated AI system, analogous to the “queen bee”. This AI boasts an advanced understanding of blockchain operations, smart contracts, and digital token transactions. It orchestrates the entire process, intelligently governing the actions of each injected rogue address."],
-      imageUrl: "/b1h0.jpg",
+      imageUrl: "/idefiai.jpg",
       imageAlt: "Description of image",
     },
     {

@@ -1,4 +1,7 @@
 {
-  "/not-found": "app/not-found.js",
-  "/(primary)/page": "app/(primary)/page.js"
+  "/(primary)/b1h0/page": "app/(primary)/b1h0/page.js",
+  "/(primary)/idac/page": "app/(primary)/idac/page.js",
+  "/(primary)/dataroom/page": "app/(primary)/dataroom/page.js",
+  "/(primary)/ipoc/page": "app/(primary)/ipoc/page.js",
+  "/(primary)/team/page": "app/(primary)/team/page.js"
 }
