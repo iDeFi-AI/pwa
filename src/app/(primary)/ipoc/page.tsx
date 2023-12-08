@@ -51,8 +51,8 @@ interface SectionProps {
 const DACI: React.FC = () => {
   const sections: SectionProps[] = [
     {
-      title: '#1 B1H0: B1ackH0rnet',
-      intro: 'B1H0 introduces an ingenious solution, the Rogue Wallet, which seamlessly infiltrates mixers and tumblers for data mining and intelligence extraction.',
+      title: '#1 B1H0',
+      intro: 'The B1ack H0rnet introduces an ingenious solution, the Rogue Wallet, which seamlessly infiltrates mixers and tumblers for data mining and intelligence extraction.',
       paragraphs: [
         'The Rogue Wallet is designed to infiltrate cryptocurrency mixers and tumblers, extracting valuable data without detection.',
         'AI-driven intelligence: B1H0 employs advanced AI for data analysis and pattern recognition, enhancing transparency in crypto transactions.',
@@ -61,8 +61,8 @@ const DACI: React.FC = () => {
       video: <YouTubeVideo />,
     },
     {
-      title: '#2 iDAC: Digital Asset Score',
-      intro: 'iDAC Score is a revolutionary concept, reshaping risk assessment in DeFi while accommodating traditional financial institutions (TradFi) and centralized financial exchanges (CeFi).',
+      title: '#2 iDAC',
+      intro: 'A revolutionary trust algorithim, reshaping risk assessment in DeFi while accommodating traditional financial institutions (TradFi) and centralized financial exchanges (CeFi).',
       paragraphs: [
         'iDAC Score: A paradigm shift in risk assessment, iDAC Score sets new standards for DeFi, TradFi, and CeFi.',
         'Multi-industry application: iDAC Score bridges the gap between traditional finance and the crypto world, empowering global financial institutions.',
@@ -91,7 +91,7 @@ const DACI: React.FC = () => {
           </div>
         ))}
         <div className="container header section">
-          <h2>Prototype</h2>
+          <h2>#3 Prototype</h2>
           <FigmaVideo />
         </div>
       </div>

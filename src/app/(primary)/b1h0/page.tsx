@@ -76,6 +76,7 @@ const BlogPost: React.FC = () => {
                 height={200} // Adjust the width and height as needed
                 src={section.imageUrl}
                 alt={section.imageAlt ?? section.title}
+                className="englarged-image"
               />
               <hr style={{ border: 'none', borderRadius: '5px', borderBottom: '3px solid grey', width: '100%', margin: '90px 0' }} />
             </div>

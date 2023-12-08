@@ -196,7 +196,7 @@ const IDAC: React.FC = () => {
                   Generate Score
                 </button>
                 {generatedScore !== null && (
-                  <div className={`hexagon-container ${getColorForScore(generatedScore)}`}>
+                  <div className={` ${getColorForScore(generatedScore)}`}>
                     <HexagonScore seed={userAddress.toLowerCase()} />
                   </div>
                 )}
