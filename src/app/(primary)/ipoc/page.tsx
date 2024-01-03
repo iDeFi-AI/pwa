@@ -41,6 +41,16 @@ const YouTubeVideo2 = () => (
   </div>
 );
 
+const YouTubeVideo3 = () => (
+  <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+    <iframe
+      allowFullScreen
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      src="https://www.youtube.com/embed/oLH52dC8vPU?si=Bg4l8c_5xm3ILbHt"
+    ></iframe>
+  </div>
+);
+
 interface SectionProps {
   title: string;
   intro: string;
@@ -70,7 +80,17 @@ const DACI: React.FC = () => {
       ],
       video: <YouTubeVideo2 />,
     },
-    // Add more sections as needed
+    {
+      title: '#3 AI Insights',
+      intro: 'Embark on a journey into the future of decentralized finance (DeFi) with our cutting-edge Artificial Intelligence (AI) solutions. Setting unprecedented standards for DeFi, traditional financial institutions (TradFi), and centralized financial exchanges (CeFi).',
+      paragraphs: [
+        'Intelligent Transaction Analysis: Harnessing the power of advanced AI algorithms, our platform delivers unparalleled insights into cryptocurrency transactions. The AI-driven analysis seamlessly integrates with the iDAC Score, providing a comprehensive overview of transactional activities.',
+        'Seamless Integration with iDAC Score: The synergy between AI and the iDAC Score reshapes risk assessment in real-time. As transactions unfold, our AI diligently analyzes patterns, contributing to the dynamic calculation of the iDAC Score. This integration ensures a secure and transparent financial landscape.',
+        'Empowering Financial Decision-Making: AI doesn\'t just provide insights; it empowers individuals and institutions to make informed financial decisions. By unlocking untapped potential and revolutionizing decision-making processes, our AI solutions redefine the way we approach risk assessment in both traditional and crypto finance.',
+        'Revolutionizing Threat Intelligence: As we propel into the future, our AI takes center stage in evolving threat intelligence, crypto-analytics, and regulatory compliance. The insights generated contribute to a more secure and compliant crypto-sphere, ensuring the integrity of financial transactions.',
+      ],
+      video: <YouTubeVideo3 />,
+    },
   ];
 
   return (
@@ -91,7 +111,7 @@ const DACI: React.FC = () => {
           </div>
         ))}
         <div className="container header section">
-          <h2>#3 Prototype</h2>
+          <h2>#4 Mobile Demo</h2>
           <FigmaVideo />
         </div>
       </div>

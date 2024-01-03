@@ -50,31 +50,37 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((txn, index) => (
-              <tr key={index}>
-                <td className="score-transactions">
-                  <div className="txn-hex">
-                    {/* Use next/image directly */}
-                    <Image
-                      src={`/${getColorForScore(txn.thirdPartyIdacScore)}.png`}
-                      alt="Hexagon"
-                      width={25}
-                      height={25}
-                    />
-                  </div>
-                  <div className="tab-score">{txn.thirdPartyIdacScore}</div>
-                </td>
-                <td>{txn.type}</td>
-                <td className="wallet">
-                  <div className="shortened-wallet" title={txn.thirdPartyWallet}>
-                    {shortenWalletAddress(txn.thirdPartyWallet)}
-                  </div>
-                </td>
-                <td>{txn.timestamp}</td>
-                <td>{txn.cryptocurrency}</td>
-                <td>${txn.usdAmount.toFixed(2)}</td>
+            {Array.isArray(transactions) && transactions.length > 0 ? (
+              transactions.map((txn, index) => (
+                <tr key={index}>
+                  <td className="score-transactions">
+                    <div className="txn-hex">
+                      {/* Use next/image directly */}
+                      <Image
+                        src={`/${getColorForScore(txn.thirdPartyIdacScore)}.png`}
+                        alt="Hexagon"
+                        width={25}
+                        height={25}
+                      />
+                    </div>
+                    <div className="tab-score">{txn.thirdPartyIdacScore}</div>
+                  </td>
+                  <td>{txn.type}</td>
+                  <td className="wallet">
+                    <div className="shortened-wallet" title={txn.thirdPartyWallet}>
+                      {shortenWalletAddress(txn.thirdPartyWallet)}
+                    </div>
+                  </td>
+                  <td>{txn.timestamp}</td>
+                  <td>{txn.cryptocurrency}</td>
+                  <td>${txn.usdAmount.toFixed(2)}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={6}>No transactions available</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

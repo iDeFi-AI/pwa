@@ -38,15 +38,15 @@ html, body {
 
 h1, h2, h5, h6 { 
   font-weight: bold; /* Making all headers bold */
-  font-size: 48px; 
+  font-size: 34px; 
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 h4 {
-  font-size: 24px;
+  font-size: 21px;
 }
 
 * {
@@ -87,6 +87,7 @@ p {
   margin-bottom: .5rem; /* spacing below each paragraph element */
   color: #913d88; 
   font-weight: 600;
+  font-size: 16px; 
 }
 
 form {
