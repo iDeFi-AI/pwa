@@ -1,17 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Video: React.FC = () => (
-  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden" }}>
-    <iframe
-      allowFullScreen
-      style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%", border: "none", borderRadius: "25px" }}
-      src="https://www.youtube.com/embed/9ly8VacW-qY?si=-TFXtuPL_toyLnaY"
-      frameBorder="0"
-    ></iframe>
-  </div>
-);
-
 interface SectionProps {
   title: string;
   intro: string;
@@ -48,11 +37,6 @@ const BlogPost: React.FC = () => {
       intro: "B1H0 stealth operation unlocks a new realm...",
       paragraphs: ["Threat Intelligence: By providing a transparent view of typically obscured transactions, we contribute to the broader fight against money laundering and illicit trade in the cryptocurrency world, offering vital data to relevant law enforcement agencies and financial institutions. Crypto-Analytics: Researchers and analysts benefit from a better understanding of cryptocurrency transactions. The solution provides previously unattainable insights crucial for market forecasting and trend prediction. Regulatory Compliance: Financial firms and institutions can proactively monitor their operations to ensure compliance with regulatory guidelines. By tracking interactions with potential mixers or tumblers, they can avoid transactions that may lead to compliance issues."],
       imageUrl: "/b1h02.jpg",
-    },
-    {
-      title: "Initial Proof of Concept",
-      intro: "Visual concept using Python",
-      paragraphs: [""],
     }
   ];
 
@@ -83,7 +67,6 @@ const BlogPost: React.FC = () => {
           )}
         </div>
       ))}
-      <Video />
     </div>
   );
 };

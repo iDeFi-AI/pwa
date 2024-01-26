@@ -1,4 +1,4 @@
-// File: /home/k3ytoshi/iD-PWA/src/app/(primary)/dapp/page.tsx
+// File: /home/k3ytoshi/iDeFi-AI-PWA/src/app/(primary)/dapp/page.tsx
 import * as entry from '../../../../../src/app/(primary)/dapp/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

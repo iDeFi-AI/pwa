@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": ["dotenv"],
     "lib": [
       "dom",
       "dom.iterable",

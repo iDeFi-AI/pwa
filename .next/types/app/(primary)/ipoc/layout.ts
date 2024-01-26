@@ -1,4 +1,4 @@
-// File: /home/k3ytoshi/iD-PWA/src/app/(primary)/ipoc/layout.tsx
+// File: /home/k3ytoshi/iDeFi-AI-PWA/src/app/(primary)/ipoc/layout.tsx
 import * as entry from '../../../../../src/app/(primary)/ipoc/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

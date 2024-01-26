@@ -14,6 +14,7 @@ const menuItems = [
   { label: `POC`, url: `ipoc` },
   { label: `TEAM`, url: `team` },
   { label: 'Log out', url: '/' },
+  {label: 'Launch App', url: 'dapp'}
 ];
 
 const NavMenu: React.FC<NavMenuProps> = ({}) => {
@@ -59,7 +60,13 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                 <div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
                   {menuItems.map((item) => (
                     <HeaderNavLink href={item.url} key={item.url}>
-                      {item.label}
+                      {item.label === 'Launch App' ? (
+                        <button className='text-white bg-purple-400 px-3 py-2 rounded-full'>
+                          {item.label}
+                        </button>
+                      ) : (
+                        item.label
+                      )}
                     </HeaderNavLink>
                   ))}
                 </div>
@@ -84,10 +91,16 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
               {menuItems.map((item) => {
                 return (
                   <Link href={item.url} key={item.label}>
-                    <div className='block py-2 text-base font-medium text-gray-600 hover:text-purple-400'>
-                      {item.label}
-                    </div>
-                  </Link>
+                  <div className='block py-2 text-base font-medium text-gray-600 hover:text-purple-400'>
+                    {item.label === 'Launch App' ? (
+                      <button className='text-white bg-purple-400 px-3 py-2 rounded-full'>
+                        {item.label}
+                      </button>
+                    ) : (
+                      item.label
+                    )}
+                  </div>
+                </Link>
                 );
               })}
             </div>

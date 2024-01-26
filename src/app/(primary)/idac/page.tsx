@@ -197,7 +197,7 @@ const IDAC: React.FC = () => {
                 </button>
                 {generatedScore !== null && (
                   <div className={` ${getColorForScore(generatedScore)}`}>
-                    <HexagonScore seed={userAddress.toLowerCase()} />
+                    <HexagonScore seed={userAddress.toLowerCase()} generatedScore={generatedScore} />
                   </div>
                 )}
                 {generatedScore !== null && <ScoreTxns transactions={transactions} />}

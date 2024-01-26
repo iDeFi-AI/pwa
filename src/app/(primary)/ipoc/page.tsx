@@ -51,6 +51,16 @@ const YouTubeVideo3 = () => (
   </div>
 );
 
+const YouTubeVideo4 = () => (
+  <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+    <iframe
+      allowFullScreen
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      src="https://www.youtube.com/embed/SyG0uLmq5-A?si=ScNSt6oNJXULA-F0"
+    ></iframe>
+  </div>
+);
+
 interface SectionProps {
   title: string;
   intro: string;
@@ -91,6 +101,15 @@ const DACI: React.FC = () => {
       ],
       video: <YouTubeVideo3 />,
     },
+    {
+      title: '#4 AI Threat Detection',
+      intro: 'Explore the capabilities of our state-of-the-art AI Threat Detection system, revolutionizing decentralized finance (DeFi) and reshaping security standards for traditional financial institutions (TradFi) and centralized financial exchanges (CeFi).',
+      paragraphs: [
+        'Advanced Threat Analysis: Our platform leverages cutting-edge AI algorithms to provide in-depth insights into potential threats within cryptocurrency transactions. The AI-driven analysis seamlessly integrates with the iDAC Score, delivering a holistic view of transactional activities and enhancing threat detection capabilities.',
+        'Dynamic Integration with iDAC Score: The dynamic synergy between AI Threat Detection and the iDAC Score transforms risk assessment in real-time. As transactions unfold, our AI system meticulously examines patterns, contributing to the continuous refinement of the iDAC Score. This integration ensures a resilient and transparent financial landscape with enhanced threat detection.',
+      ],
+      video: <YouTubeVideo4 />,
+    },    
   ];
 
   return (

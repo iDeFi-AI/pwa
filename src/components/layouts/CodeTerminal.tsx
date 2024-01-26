@@ -31,6 +31,7 @@ export const CodeTerminal: React.FC<CodeTerminalProps> = ({ children }) => {
         backgroundColor: '#000',
         padding: '1em',
         borderRadius: '5px',
+        borderColor: '#913d88',
         color: '#fff',
         whiteSpace: 'pre-wrap', // Allow text to wrap
         wordWrap: 'break-word', // Break words that are too long

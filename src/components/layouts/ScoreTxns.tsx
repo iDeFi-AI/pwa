@@ -38,20 +38,20 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
     <div className="score-transactions">
       <h2>Transaction History</h2>
       <div className="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Party Score</th>
-              <th>Type</th>
-              <th>Party Wallet</th>
-              <th>Timestamp</th>
-              <th>Crypto</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.isArray(transactions) && transactions.length > 0 ? (
-              transactions.map((txn, index) => (
+        {Array.isArray(transactions) && transactions.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Party Score</th>
+                <th>Type</th>
+                <th>Party Wallet</th>
+                <th>Timestamp</th>
+                <th>Crypto</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((txn, index) => (
                 <tr key={index}>
                   <td className="score-transactions">
                     <div className="txn-hex">
@@ -75,14 +75,12 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
                   <td>{txn.cryptocurrency}</td>
                   <td>${txn.usdAmount.toFixed(2)}</td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={6}>No transactions available</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No transactions available for the given address.</p>
+        )}
       </div>
       <style jsx>{`
         .score-transactions {

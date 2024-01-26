@@ -1,12 +1,21 @@
-'use client'
+'use client';
 
 // Import necessary libraries and components
 import React, { useEffect, useRef, useState } from 'react';
+import {
+  pushTransaction,
+  pushAiInsights,
+  listenToTransactions,
+  storeUserId,
+} from '@/utilities/firebaseClient';
 import Head from 'next/head';
 import Image from 'next/image';
 import EthIDAC from '@/components/layouts/EthIDAC';
 import HexagonScore from '@/components/layouts/ScoreHexa';
 import ScoreTxns from '@/components/layouts/ScoreTxns';
+import CodeTerminal from '@/components/layouts/CodeTerminal';
+import { fetchData, generateInsights, generateOpenAIPrompt as generateOpenAIPromptUtil } from '@/utilities/dataUtils';
+import web3 from '@/utilities/web3Utils';
 
 // Define the Transaction type
 type TransactionType = 'Sent' | 'Received';
@@ -19,6 +28,11 @@ interface Transaction {
   thirdPartyIdacScore: number;
   usdAmount: number;
   thirdPartyWallet: string;
+}
+
+interface InsightsResponse {
+  openAIResponse?: string | null; // Adjust the type based on the expected response
+  // Add other properties as needed
 }
 
 const getColorForScore = (score: number): string => {
@@ -42,20 +56,152 @@ const DApp: React.FC = () => {
   const [userAddress, setUserAddress] = useState('');
   const [generatedScore, setGeneratedScore] = useState<number | null>(null);
   const [insights, setInsights] = useState<string>('');
+  const [connectedAccount, setConnectedAccount] = useState<string | null>(null);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const otherAddress = ''; // Adjust this value based on your requirements
 
   useEffect(() => {
     mounted.current = true;
+
+    // Listen to changes in transactions and update the state
+    listenToTransactions((data) => {
+      if (mounted.current) {
+        setTransactions(data || []);
+      }
+    });
+
     return () => {
       mounted.current = false;
     };
   }, []);
 
-  const handleGenerateScore = async () => {
-    const score = generateScore(userAddress);
-    setGeneratedScore(score);
+  const isValidAddress = (address: string) => {
+    const ethRegExp = /^(0x)?[0-9a-fA-F]{40}$/;
+    const btcRegExp = /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/;
+    return ethRegExp.test(address) || btcRegExp.test(address);
+  };
 
-    const insightsResponse = await generateInsights(userAddress);
-    setInsights(insightsResponse);
+  const handleAccountChange = (account: string | null) => {
+    setConnectedAccount(account);
+    setUserAddress(account || ''); // Set userAddress when account changes
+  };
+
+  const connectWallet = async () => {
+    try {
+      const accounts: string[] | null = await web3.eth.requestAccounts();
+      const fetchedAccount = accounts?.[0] || null;
+      setConnectedAccount(fetchedAccount);
+      setUserAddress(fetchedAccount || ''); // Set userAddress when account changes
+      // Reload the page after successful wallet connection
+      window.location.reload();
+    } catch (error: any) {
+      console.error('Error connecting wallet:', error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      try {
+        const accounts: string[] | null = await web3.eth.getAccounts();
+        const fetchedAccount = accounts?.[0] || null;
+        setConnectedAccount(fetchedAccount);
+        setUserAddress(fetchedAccount || ''); // Set userAddress when account changes
+      } catch (error: any) {
+        console.error('Error fetching account:', error.message);
+      }
+    };
+
+    // Fetch account only if mounted and there is no connected account
+    if (mounted.current && !connectedAccount) {
+      fetchAccount();
+    }
+  }, [connectedAccount]); 
+  
+  const handleGenerateScore = async () => {
+    // Determine the address to use
+    const addressToUse = connectedAccount || userAddress;
+
+    if (!isValidAddress(addressToUse)) {
+      alert('Invalid Address. Please enter a valid address.');
+      return;
+    }
+
+    // Fetch transaction data
+    const fetchedTransactions = await fetchData(addressToUse, 'eth');
+
+    if (fetchedTransactions && fetchedTransactions.length > 0) {
+      // Store user ID in Firebase
+      storeUserId({ userId: addressToUse });
+
+      // Push each transaction individually to Firebase
+      fetchedTransactions.forEach((transaction) => {
+        pushTransaction(transaction);
+      });
+
+      // Set transactions state for ScoreTxns component
+      setTransactions(fetchedTransactions);
+
+      // Generate and set the score
+      const score = generateScore(addressToUse);
+      setGeneratedScore(score);
+      
+      alert('Transaction history loaded succesfully!');
+
+      try {
+        // Generate OpenAI prompt based on transactions
+        const openAIPrompt = generateOpenAIPrompt(addressToUse, otherAddress, fetchedTransactions);
+
+        // Generate and set insights
+        const insightsResponse = await generateInsights(addressToUse, otherAddress, openAIPrompt);
+
+        // Log the insightsResponse for debugging
+        console.log('Insights response:', insightsResponse);
+
+        if (insightsResponse) {
+          if (typeof insightsResponse === 'string') {
+            // Set insights only if it's a string (not null)
+            setInsights(insightsResponse);
+
+            // Push insights to Firebase
+            pushAiInsights({ userAddress: addressToUse, insights: insightsResponse, timestamp: Date.now() });
+          } else {
+            console.error('Invalid insights response:', insightsResponse);
+          }
+        } else {
+          console.error('Insights response is null.');
+        }
+      } catch (error) {
+        console.error('Error generating insights:', error);
+      }
+    } else {
+      // Handle case where there are no transactions
+      setTransactions([]); // Set transactions to an empty array
+
+      // Set generated score to null or any default value
+      setGeneratedScore(null);
+
+      // Optionally, you can set a message or take other actions to inform the user
+      console.log('No transactions available for the given address.');
+      alert('No transactions or score available for the given address.');
+      return; // This will prevent further execution of the function
+    }
+  };
+
+  const generateOpenAIPrompt  = (userAddress: string, otherAddress: string, transactions: Transaction[]): string => {
+    const transactionDetails = transactions.map((txn, index) => (
+      `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`
+    )).join('\n');
+
+    const prompt = `
+     "Analyze Ethereum address for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
+      Provide insights for the relationship between Ethereum addresses ${userAddress} and its ${transactions} and identify the unique addresses involved ${otherAddress}.
+      ${transactionDetails}
+    `;
+
+    // Log the generated prompt
+    console.log('Generated OpenAI Prompt:', prompt);
+
+    return prompt;
   };
 
   const generateScore = (address: string): number => {
@@ -71,35 +217,6 @@ const DApp: React.FC = () => {
       hash = (hash << 5) - hash + char;
     }
     return hash;
-  };
-
-  const generateInsights = async (userAddress: string): Promise<string> => {
-    const openaiApiKey = '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';
-
-    try {
-      const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${openaiApiKey}`,
-        },
-        body: JSON.stringify({
-          prompt: `Provide insights for Ethereum address ${userAddress} and its 3rd party involvement with other addresses.`,
-          max_tokens: 500,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.choices && data.choices.length > 0) {
-        return data.choices[0].text || 'No insights available.';
-      } else {
-        return 'No insights available.';
-      }
-    } catch (error) {
-      console.error('Error generating insights:', error);
-      return 'Error generating insights.';
-    }
   };
 
   return (
@@ -121,24 +238,50 @@ const DApp: React.FC = () => {
               margin: '30px 0',
             }}
           />
-          <div className="image-container">
+          <div className="image-container" style={{ padding: '50px' }}>
             <Image src="/idacscore.png" alt="idacscore" width={1600} height={1000} />
           </div>
-          <HexagonScore seed={userAddress.toLowerCase()} />
-          <EthIDAC seed={userAddress} />
-          <input
-            type="text"
-            placeholder=" ETH, BTC, or ATOM"
-            value={userAddress}
-            onChange={(e) => setUserAddress(e.target.value)}
-            style={{ backgroundColor: '#f0f0f0', color: 'black', margin: '10px 0' }}
-          />
+          {generatedScore !== null && (
+            <div className={` ${getColorForScore(generatedScore)}`}>
+              <HexagonScore seed={userAddress.toLowerCase()} generatedScore={generatedScore} />
+            </div>
+          )}
+         <div className="flex items-center justify-center">
+          <button
+            onClick={connectWallet}
+            style={{
+              backgroundColor: '#913d88',
+              color: 'white',
+              fontWeight: '300',
+              margin: '10px',
+              padding: '10px',
+              borderRadius: '5px',
+            }}
+           >
+            Connect Wallet
+          </button>
           <button
             onClick={handleGenerateScore}
-            style={{ backgroundColor: '#913d88', color: 'white', fontWeight: '600', padding: '10px' }}
+            style={{
+              backgroundColor: '#913d88',
+              color: 'white',
+              fontWeight: '300',
+              margin: '10px',
+              padding: '10px',
+              borderRadius: '5px',
+            }}
           >
             Generate Score
           </button>
+          </div>
+          <EthIDAC seed={userAddress} onAccountChange={handleAccountChange} />
+          <input
+            type="text"
+            placeholder=" ETH or BTC"
+            value={userAddress}
+            onChange={(e) => setUserAddress(e.target.value)}
+            style={{ textAlign: 'center', backgroundColor: '#f0f0f0', color: 'black', margin: '10px 0' }}
+          />
           <hr
             style={{
               border: 'none',
@@ -148,16 +291,16 @@ const DApp: React.FC = () => {
               margin: '90px 0',
             }}
           />
-          {generatedScore !== null && (
-            <div className={getColorForScore(generatedScore)}>
-              {/* Ensure transactions prop is passed correctly */}
-              <ScoreTxns transactions={[]} />
-            </div>
+          {generatedScore !== null && transactions.length > 0 && (
+            <ScoreTxns transactions={transactions} />
+          )}
+          {generatedScore !== null && transactions.length === 0 && (
+            <p>No transactions available for the given address.</p>
           )}
           {/* Display generated insights */}
           <div className="header container">
             <h2>AI Insights:</h2>
-            <p>{insights}</p>
+            <CodeTerminal>{insights}</CodeTerminal>
           </div>
         </div>
       </section>
