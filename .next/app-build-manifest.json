@@ -1,14 +1,14 @@
 {
   "pages": {
-    "/(primary)/dapp/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(primary)/dapp/layout.js"
-    ],
     "/(primary)/dapp/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(primary)/dapp/page.js"
+    ],
+    "/(primary)/dapp/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(primary)/dapp/layout.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
