@@ -1,7 +1,9 @@
 # Note that we only run prettier in src/** anyway, see package.json script `format`.
 
+constants/env.ts
 node_modules
 .public
+.env
 
 # IDE
 .vscode
