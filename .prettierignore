@@ -23,4 +23,3 @@ build
 # generated files
 src/typechain-types
 src/graphql/codegen/generated.ts
-src/constants/env.ts
