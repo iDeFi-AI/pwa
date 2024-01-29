@@ -15,79 +15,115 @@ interface Transaction {
 
 interface ScoreTxnsProps {
   transactions: Transaction[];
+  overallScore: number | null; // Pass the overall iDAC score as a prop
 }
 
-const getColorForScore = (score: number): string => {
+const getColorForScore = (score: number, overallScore: number | null): string => {
+  if (overallScore === null) {
+    return 'grey'; // Default color for unknown overall score
+  }
+
   if (score >= 850) {
     return 'green';
   } else if (score >= 740) {
     return 'yellow';
-  } else if (score >= 630) {
+  } else if (score >= 670) {
     return 'orange';
-  } else if (score >= 410) {
+  } else if (score >= 580) {
     return 'red';
-  } else if (score >= 310) {
-    return 'black';
+  } else if (score >= 450) {
+    return 'black'; // Changed from 'mixed' to 'black' based on your provided criteria
   } else {
     return 'grey';
   }
 };
 
-const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
+const getCategoryForScore = (score: number): string => {
+  if (score >= 850) {
+    return 'Excellent';
+  } else if (score >= 740) {
+    return 'Good';
+  } else if (score >= 670) {
+    return 'Fair';
+  } else if (score >= 580) {
+    return 'Poor';
+  } else if (score >= 450) {
+    return 'Bad';
+  } else {
+    return 'New';
+  }
+};
+
+const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions, overallScore }) => {
   return (
     <div className="score-transactions">
       <h2>Transaction History</h2>
       <div className="table-container">
-        {Array.isArray(transactions) && transactions.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>Party Score</th>
-                <th>Type</th>
-                <th>Party Wallet</th>
-                <th>Timestamp</th>
-                <th>Crypto</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((txn, index) => (
-                <tr key={index}>
-                  <td className="score-transactions">
-                    <div className="txn-hex">
-                      {/* Use next/image directly */}
-                      <Image
-                        src={`/${getColorForScore(txn.thirdPartyIdacScore)}.png`}
-                        alt="Hexagon"
-                        width={25}
-                        height={25}
-                      />
-                    </div>
-                    <div className="tab-score">{txn.thirdPartyIdacScore}</div>
-                  </td>
-                  <td>{txn.type}</td>
-                  <td className="wallet">
-                    <div className="shortened-wallet" title={txn.thirdPartyWallet}>
-                      {shortenWalletAddress(txn.thirdPartyWallet)}
-                    </div>
-                  </td>
-                  <td>{txn.timestamp}</td>
-                  <td>{txn.cryptocurrency}</td>
-                  <td>${txn.usdAmount.toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No transactions available for the given address.</p>
-        )}
+        <div className="scroll-view">
+          {Array.isArray(transactions) && transactions.length > 0 ? (
+            <div className="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Party Score</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Party Wallet</th>
+                    <th>Timestamp</th>
+                    <th>Crypto</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((txn, index) => (
+                    <tr key={index}>
+                      <td className="score-transactions">
+                        <div className="txn-hex">
+                          <Image
+                            src={`/${getColorForScore(txn.thirdPartyIdacScore, overallScore)}.png`}
+                            alt="Hexagon"
+                            width={15}
+                            height={15}
+                          />
+                        </div>
+                        <div className="tab-score">{txn.thirdPartyIdacScore}</div>
+                      </td>
+                      <td className={getCategoryForScore(txn.thirdPartyIdacScore)}>
+                        {getCategoryForScore(txn.thirdPartyIdacScore)}
+                      </td>
+                      <td>{txn.type}</td>
+                      <td className="wallet">
+                        <div className="shortened-wallet" title={txn.thirdPartyWallet}>
+                          {shortenWalletAddress(txn.thirdPartyWallet)}
+                        </div>
+                      </td>
+                      <td>{txn.timestamp}</td>
+                      <td>{txn.cryptocurrency}</td>
+                      <td>${txn.usdAmount.toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>No transactions available for the given address.</p>
+          )}
+        </div>
       </div>
       <style jsx>{`
         .score-transactions {
           margin-top: 20px;
         }
         .table-container {
-          overflow-x: auto; /* Enable horizontal scroll on small screens */
+          overflow: auto; /* Enable both horizontal and vertical scroll */
+        }
+        .scroll-view {
+          max-height: 400px; /* Set max height for scroll view */
+          overflow: auto; /* Enable vertical scroll */
+        }
+        .table-responsive {
+          width: 100%;
+          overflow-x: auto; /* Enable horizontal scroll */
         }
         table {
           width: 100%;
@@ -95,7 +131,7 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
           margin-top: 10px;
         }
         th, td {
-          border: 1px solid #ddd;
+          border: 2px solid #ddd;
           padding: 8px;
           text-align: left;
         }
@@ -118,8 +154,33 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions }) => {
         /* Media query for smaller screens */
         @media (max-width: 600px) {
           th, td {
-            font-size: 12px;
+            font-size: 8px;
+            padding: 3px; /* Adjust padding for smaller screens */
           }
+          .tab-score {
+            max-width: 25px; /* Adjust the maximum width for score */
+          }
+        }
+
+        /* Custom styles for category classes */
+        .Excellent {
+          color: green;
+        }
+        .Good {
+          color: yellow;
+        }
+        .Fair {
+          color: orange;
+        }
+        .Poor {
+          color: red;
+        }
+        .Bad {
+          color: black;
+          border: 1px solid white; /* Add the desired border style for the "Bad" category */
+        }
+        .New {
+          color: grey;
         }
       `}</style>
     </div>

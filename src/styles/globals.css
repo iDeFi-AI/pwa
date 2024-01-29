@@ -288,6 +288,44 @@ form {
   text-align: center;
 }
 
+@media (max-width: 1024px) {
+  .score
+  { color: black;
+  font-weight: bold;
+  position: absolute;
+  font-size: 12px;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+ }
+}
+
+@media (max-width: 768px) {
+  .score
+  { color: black;
+  font-weight: bold;
+  position: absolute;
+  font-size: 24px;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+ }
+}
+
+@media (max-width: 480px) {
+  .score
+  { color: black;
+  font-weight: bold;
+  position: absolute;
+  font-size: 24px;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+ }
+}
 
 .description {
   background-color: #ffffff;
@@ -326,9 +364,38 @@ form {
 
 /* Adjust the size of the hexagon as needed */
 .hexagon-poc {
-  width: 100px; 
-  height: 100px; 
+  width: 200px; 
+  height: 200px; 
   position: relative;
   bottom: 11em;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 1024px) {
+  .hexagon-poc {
+    width: 200px; /* Adjust the size for smaller screens, e.g., tablets */
+    height: 200px; /* Adjust the size for smaller screens, e.g., tablets */
+    bottom: 9em;
+    position: relative; /* Adjust the positioning for smaller screens, e.g., tablets */
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .hexagon-poc {
+    width: 100px; /* Adjust the size for smaller screens, e.g., tablets */
+    height: 100px; /* Adjust the size for smaller screens, e.g., tablets */
+    bottom: 9em;
+    position: relative; /* Adjust the positioning for smaller screens, e.g., tablets */
+  }
+}
+
+/* Media query for even smaller screens, e.g., phones */
+@media (max-width: 480px) {
+  .hexagon-poc {
+    width: 100px; /* Adjust the size for smaller screens, e.g., phones */
+    height: 100px; /* Adjust the size for smaller screens, e.g., phones */
+    bottom: 7em;
+    position: relative; /* Adjust the positioning for smaller screens, e.g., phones */
+  }
+}

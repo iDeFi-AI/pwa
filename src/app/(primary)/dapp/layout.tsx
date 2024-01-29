@@ -5,7 +5,7 @@ import Footer from '@/components/layouts/Footer'
 import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
-  title: 'AI-POC',
+  title: 'dApp',
   description: 'AI-POC DApp',
 }
 

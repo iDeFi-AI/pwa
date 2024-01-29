@@ -88,12 +88,17 @@ const DApp: React.FC = () => {
 
   const connectWallet = async () => {
     try {
-      const accounts: string[] | null = await web3.eth.requestAccounts();
-      const fetchedAccount = accounts?.[0] || null;
-      setConnectedAccount(fetchedAccount);
-      setUserAddress(fetchedAccount || ''); // Set userAddress when account changes
-      // Reload the page after successful wallet connection
-      window.location.reload();
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = 'https://idefi.ai/dapp'; // Redirect to the mobile wallet deep link
+      } else {
+        const accounts: string[] | null = await web3.eth.requestAccounts();
+        const fetchedAccount = accounts?.[0] || null;
+        setConnectedAccount(fetchedAccount);
+        setUserAddress(fetchedAccount || '');
+        window.location.reload();
+      }
     } catch (error: any) {
       console.error('Error connecting wallet:', error.message);
     }
@@ -149,7 +154,7 @@ const DApp: React.FC = () => {
 
       try {
         // Generate OpenAI prompt based on transactions
-        const openAIPrompt = generateOpenAIPrompt(addressToUse, otherAddress, fetchedTransactions);
+        const openAIPrompt = generateOpenAIPrompt(addressToUse, otherAddress, fetchedTransactions, generatedScore);
 
         // Generate and set insights
         const insightsResponse = await generateInsights(addressToUse, otherAddress, openAIPrompt);
@@ -187,23 +192,25 @@ const DApp: React.FC = () => {
     }
   };
 
-  const generateOpenAIPrompt  = (userAddress: string, otherAddress: string, transactions: Transaction[]): string => {
+  const generateOpenAIPrompt = (userAddress: string, otherAddress: string, transactions: Transaction[], generatedScore: number | null): string => {
     const transactionDetails = transactions.map((txn, index) => (
       `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`
     )).join('\n');
-
+  
     const prompt = `
-     "Analyze Ethereum address for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
-      Provide insights for the relationship between Ethereum addresses ${userAddress} and its ${transactions} and identify the unique addresses involved ${otherAddress}.
+      Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
+      Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
+      Showcasing iDAC-Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
-
+  
     // Log the generated prompt
     console.log('Generated OpenAI Prompt:', prompt);
-
+  
     return prompt;
   };
-
+  
+  
   const generateScore = (address: string): number => {
     const hash = hashCode(address);
     const uniqueScore = Math.abs(hash) % 851;
@@ -222,13 +229,13 @@ const DApp: React.FC = () => {
   return (
     <div className="main-container">
       <Head>
-        <title>DApp POC</title>
+        <title>dAPP - iDAC</title>
       </Head>
       <section className="bg-black">
         <div className="layout flex min-h-screen flex-col items-center justify-center py-12 text-center">
-          <h1 className="text-white font-bold text-4xl mb-6">DApp POC</h1>
+          <h1 className="text-white font-bold text-4xl mb-6">dAPP - iDAC</h1>
           <h4>Connect wallet or enter address</h4>
-          <p>To generate an iDAC score with AI-Insights</p>
+          <p>Generate iDAC Trust Score with DeFi-AI</p>
           <hr
             style={{
               border: 'none',
@@ -292,14 +299,14 @@ const DApp: React.FC = () => {
             }}
           />
           {generatedScore !== null && transactions.length > 0 && (
-            <ScoreTxns transactions={transactions} />
-          )}
+        <ScoreTxns transactions={transactions} overallScore={generatedScore} />
+        )}
           {generatedScore !== null && transactions.length === 0 && (
             <p>No transactions available for the given address.</p>
           )}
           {/* Display generated insights */}
           <div className="header container">
-            <h2>AI Insights:</h2>
+            <h2>iDAC AI:</h2>
             <CodeTerminal>{insights}</CodeTerminal>
           </div>
         </div>

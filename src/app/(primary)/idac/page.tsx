@@ -68,12 +68,14 @@ const transactions = [
 const IDAC: React.FC = () => {
   const [userAddress, setUserAddress] = useState('');
   const [generatedScore, setGeneratedScore] = useState<number | null>(null);
+  const [overallScore, setOverallScore] = useState<number | null>(null); // Added overallScore state
 
   const handleGenerateScore = () => {
     const isValidAddress = (address: string) => {
       const ethRegExp = /^(0x)?[0-9a-fA-F]{40}$/;
       const btcRegExp = /^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/;
       return ethRegExp.test(address) || btcRegExp.test(address);
+
     };
 
     if (!isValidAddress(userAddress)) {
@@ -84,7 +86,9 @@ const IDAC: React.FC = () => {
     const seed = userAddress.toLowerCase();
     const hash = hashCode(seed);
     const uniqueScore = Math.abs(hash) % 851;
+    
     setGeneratedScore(uniqueScore);
+    setOverallScore(uniqueScore);
   };
 
   const hashCode = (str: string): number => {
@@ -200,7 +204,7 @@ const IDAC: React.FC = () => {
                     <HexagonScore seed={userAddress.toLowerCase()} generatedScore={generatedScore} />
                   </div>
                 )}
-                {generatedScore !== null && <ScoreTxns transactions={transactions} />}
+                {generatedScore !== null && <ScoreTxns transactions={transactions} overallScore={overallScore}/>}
               </>
             )}
           </div>

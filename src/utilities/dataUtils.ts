@@ -81,23 +81,23 @@ export const fetchBlockCypherData = async (address: string): Promise<Transaction
 };
 
 // Generate OpenAI prompt based on transactions
-export const generateOpenAIPrompt = (userAddress: string, otherAddress: string, transactions: Transaction[]): string => {
+export const generateOpenAIPrompt = (userAddress: string, otherAddress: string, transactions: Transaction[], generatedScore: number): string => {
   const transactionDetails = transactions.map((txn, index) => (
     `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`
   )).join('\n');
 
   const prompt = `
-    "Analyze Ethereum address for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
-    Provide insights for the relationship between Ethereum addresses ${userAddress} and its ${transactions} and identify the unique addresses involved ${otherAddress}.
-    ${transactionDetails}
-  `;
+  Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
+  Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
+  Showcasing iDAC-Trust Score: ${generatedScore}.
+  ${transactionDetails}
+`;
 
   // Log the generated prompt
   console.log('Generated OpenAI Prompt:', prompt);
 
   return prompt;
 };
-
 
 // Generate insights using OpenAI API
 export const generateInsights = async (userAddress: string, otherAddress: string, openAIPrompt: string): Promise<string | null> => {
@@ -113,7 +113,7 @@ export const generateInsights = async (userAddress: string, otherAddress: string
         },
         {
           role: 'user',
-          content: `Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}.`,
+          content: `Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress} based off the transaction history.`,
         },
         {
           role: 'assistant',

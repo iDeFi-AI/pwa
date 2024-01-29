@@ -39,11 +39,11 @@ const HexagonScore: React.FC<HexagonScoreProps> = ({ seed, generatedScore }) => 
         return 'green';
       } else if (score >= 740) {
         return 'yellow';
-      } else if (score >= 630) {
+      } else if (score >= 670) {
         return 'orange';
-      } else if (score >= 410) {
+      } else if (score >= 580) {
         return 'red';
-      } else if (score >= 310) {
+      } else if (score >= 450) {
         return 'black';
       } else {
         return 'grey';
@@ -59,12 +59,19 @@ const HexagonScore: React.FC<HexagonScoreProps> = ({ seed, generatedScore }) => 
   return (
     <div className={`hexagon-container ${color}`}>
       <div className="hexagon-poc">
-        <span className="score" style={{ color: 'white', fontSize: '18px' }}>
+        <span className="score" style={{ color: 'white', fontSize: '4vw' }}>
           {currentScore !== null ? currentScore : 'Score'}
         </span>
         {currentScore !== null && (
           <div className="inner-hexagon">
-            <Image src={`/${color}.png`} alt="Hexagon" width={100} height={100} />
+            <Image
+              src={`/${color}.png`}
+              alt="Hexagon"
+              layout="responsive"
+              width={100}
+              height={100}
+              className="hexagon-image"
+            />
           </div>
         )}
       </div>
