@@ -20,6 +20,11 @@ const EthIDAC: React.FC<EthIDACProps> = ({ seed, onAccountChange }) => {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
+        if (window.ethereum) {
+          // Request account access if not already granted
+          await window.ethereum.enable();
+        }
+
         const accounts: string[] | null = await web3.eth.getAccounts();
         const fetchedAccount = accounts?.[0] || null;
         setAccount(fetchedAccount);
