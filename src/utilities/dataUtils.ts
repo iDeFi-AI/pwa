@@ -87,11 +87,9 @@ export const generateOpenAIPrompt = (userAddress: string, otherAddress: string, 
   )).join('\n');
 
   const prompt = `
-  Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
-  Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
-  Showcasing iDAC-Trust Score: ${generatedScore}.
-  ${transactionDetails}
-`;
+    Provide an iDAC (Digital Asset Crypto) iDAC Trust Score: ${generatedScore}.
+    ${transactionDetails}
+    `;
 
   // Log the generated prompt
   console.log('Generated OpenAI Prompt:', prompt);
@@ -100,25 +98,21 @@ export const generateOpenAIPrompt = (userAddress: string, otherAddress: string, 
 };
 
 // Generate insights using OpenAI API
-export const generateInsights = async (userAddress: string, otherAddress: string, openAIPrompt: string): Promise<string | null> => {
+export const generateInsights = async (userAddress: string, otherAddress: string, openAIPrompt: string, generatedScore: number | null): Promise<string | null> => {
   try {
+    // Generate transaction details based on transactions
+    const transactions = await fetchData(userAddress, 'eth');
+    const transactionDetails = transactions?.map((txn, index) => (
+      `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`
+    )).join('\n') || '';
+
     // Construct the request payload
     const payload = {
       model: 'gpt-3.5-turbo',
       messages: [
-        {
-          role: 'system',
-          content: `Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior. 
-          Consider the following data associated with ${otherAddress}`,
-        },
-        {
-          role: 'user',
-          content: `Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress} based off the transaction history.`,
-        },
-        {
-          role: 'assistant',
-          content: openAIPrompt, // Use the generated prompt here
-        },
+        { role: 'system', content: `Provide and Analyze the iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}` },
+        { role: 'user', content: ` for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.` },
+        { role: 'assistant', content: openAIPrompt },
       ],
     };
 

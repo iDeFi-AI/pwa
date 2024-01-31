@@ -528,6 +528,10 @@ const EthIDAC = ({ seed, onAccountChange })=>{
     (0,react_.useEffect)(()=>{
         const fetchAccount = async ()=>{
             try {
+                if (window.ethereum) {
+                    // Request account access if not already granted
+                    await window.ethereum.enable();
+                }
                 const accounts = await web3Utils.eth.getAccounts();
                 const fetchedAccount = accounts?.[0] || null;
                 setAccount(fetchedAccount);
@@ -616,7 +620,7 @@ const CodeTerminal = ({ children })=>{
 const isProd = (/* unused pure expression or super */ null && ("production" === "production"));
 const isLocal = (/* unused pure expression or super */ null && ("production" === "development"));
 // constants/env.ts
-const openaiApiKey = "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";
+const openaiApiKey = "";
 const showLogger = (/* unused pure expression or super */ null && ( true || 0));
 
 ;// CONCATENATED MODULE: ./src/utilities/dataUtils.ts
@@ -689,30 +693,30 @@ const fetchBlockCypherData = async (address)=>{
 const generateOpenAIPrompt = (userAddress, otherAddress, transactions, generatedScore)=>{
     const transactionDetails = transactions.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`).join("\n");
     const prompt = `
-  Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
-  Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
-  Showcasing iDAC-Trust Score: ${generatedScore}.
-  ${transactionDetails}
-`;
+    Provide an iDAC (Digital Asset Crypto) iDAC Trust Score: ${generatedScore}.
+    ${transactionDetails}
+    `;
     // Log the generated prompt
     console.log("Generated OpenAI Prompt:", prompt);
     return prompt;
 };
 // Generate insights using OpenAI API
-const generateInsights = async (userAddress, otherAddress, openAIPrompt)=>{
+const generateInsights = async (userAddress, otherAddress, openAIPrompt, generatedScore)=>{
     try {
+        // Generate transaction details based on transactions
+        const transactions = await fetchData(userAddress, "eth");
+        const transactionDetails = transactions?.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`).join("\n") || "";
         // Construct the request payload
         const payload = {
             model: "gpt-3.5-turbo",
             messages: [
                 {
                     role: "system",
-                    content: `Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior. 
-          Consider the following data associated with ${otherAddress}`
+                    content: `Provide and Analyze the iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}`
                 },
                 {
                     role: "user",
-                    content: `Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress} based off the transaction history.`
+                    content: ` for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.`
                 },
                 {
                     role: "assistant",
@@ -882,7 +886,7 @@ const DApp = ()=>{
                 // Generate OpenAI prompt based on transactions
                 const openAIPrompt = generateOpenAIPrompt(addressToUse, otherAddress, fetchedTransactions, generatedScore);
                 // Generate and set insights
-                const insightsResponse = await generateInsights(addressToUse, otherAddress, openAIPrompt);
+                const insightsResponse = await generateInsights(addressToUse, otherAddress, openAIPrompt, generatedScore);
                 // Log the insightsResponse for debugging
                 console.log("Insights response:", insightsResponse);
                 if (insightsResponse) {
@@ -918,9 +922,7 @@ const DApp = ()=>{
     const generateOpenAIPrompt = (userAddress, otherAddress, transactions, generatedScore)=>{
         const transactionDetails = transactions.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`).join("\n");
         const prompt = `
-      Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
-      Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
-      Showcasing iDAC-Trust Score: ${generatedScore}.
+      Analyze iDAC Trust Score for Ethereum address ${userAddress} to identify potential malicious activities. Provide insights for the relationship between addresses ${userAddress} and ${otherAddress}. iDAC Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
         // Log the generated prompt
