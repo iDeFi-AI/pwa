@@ -198,7 +198,9 @@ const DApp: React.FC = () => {
     )).join('\n');
   
     const prompt = `
-      Analyze iDAC Trust Score for Ethereum address ${userAddress} to identify potential malicious activities. Provide insights for the relationship between addresses ${userAddress} and ${otherAddress}. iDAC Trust Score: ${generatedScore}.
+      Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
+      Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
+      Showcasing iDAC-Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
   

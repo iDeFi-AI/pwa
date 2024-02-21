@@ -65,7 +65,8 @@ const HexagonScore = ({ seed, generatedScore })=>{
             return "grey";
         }
     };
-    const color = generatedScore !== null ? getColorForScore(generatedScore) : "grey";
+    // or if you want to use generatedScore directly (keeping it for reference):
+    const color = getColorForScore(generatedScore !== null ? generatedScore : currentScore);
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
         className: `hexagon-container ${color}`,
         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -152,6 +153,9 @@ const getCategoryForScore = (score)=>{
     }
 };
 const ScoreTxns = ({ transactions, overallScore })=>{
+    const sortedTransactions = [
+        ...transactions
+    ].sort((a, b)=>b.thirdPartyIdacScore - a.thirdPartyIdacScore);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "jsx-487dc22868f0380d" + " " + "score-transactions",
         children: [
@@ -206,7 +210,7 @@ const ScoreTxns = ({ transactions, overallScore })=>{
                                 }),
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("tbody", {
                                     className: "jsx-487dc22868f0380d",
-                                    children: transactions.map((txn, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
+                                    children: sortedTransactions.map((txn, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
                                             className: "jsx-487dc22868f0380d",
                                             children: [
                                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("td", {

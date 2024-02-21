@@ -588,7 +588,8 @@ function HomePage() {
                                     children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                                         style: {
                                             display: "flex",
-                                            justifyContent: "space-between"
+                                            justifyContent: "space-between",
+                                            alignItems: "center"
                                         },
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
@@ -598,7 +599,7 @@ function HomePage() {
                                                     handleSignUp(evt);
                                                 },
                                                 className: "neon-button",
-                                                children: "Create Account"
+                                                children: "Sign Up"
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                                                 type: "submit",

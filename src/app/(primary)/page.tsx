@@ -119,12 +119,12 @@ export default function HomePage() {
         </div>
         <br />
         <div style={{display: 'flex', flexDirection: 'column'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
             <button type='button' onClick={(evt) => { 
               evt.preventDefault(); // prevent the page reload
               handleSignUp(evt);
             }} className="neon-button">
-              Create Account
+              Sign Up
             </button> 
             <input type='submit' value='Sign In' className="neon-button" />
           </div>

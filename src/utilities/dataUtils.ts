@@ -83,19 +83,34 @@ export const fetchBlockCypherData = async (address: string): Promise<Transaction
 // Generate OpenAI prompt based on transactions
 export const generateOpenAIPrompt = (userAddress: string, otherAddress: string, transactions: Transaction[], generatedScore: number): string => {
   const transactionDetails = transactions.map((txn, index) => (
-    `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`
+    `Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}. iDAC Trust Score for ${txn.thirdPartyWallet}: ${txn.thirdPartyIdacScore}`
   )).join('\n');
 
+  // Include additional context or data point based on your requirements
+    const iDACScoreCategories = `
+    iDAC Scoring Logic
+    Excellent Score (Score >= 850),
+    Good Score (740 <= Score < 850),
+    Fair Score (670 <= Score < 740),
+    Poor Score (580 <= Score < 670),
+    Bad Actor Score (450 <= Score < 580),
+    New/No Score (Score < 450)
+  `;
+
   const prompt = `
-    Provide an iDAC (Digital Asset Crypto) iDAC Trust Score: ${generatedScore}.
+    Analyze iDAC Trust Score for Ethereum address ${userAddress} to identify potential malicious activities.
+    Provide insights for the relationship between addresses ${userAddress} and ${otherAddress}.
+    iDAC Trust Score: ${generatedScore}.
     ${transactionDetails}
-    `;
+    ${iDACScoreCategories}
+  `;
 
   // Log the generated prompt
   console.log('Generated OpenAI Prompt:', prompt);
 
   return prompt;
 };
+
 
 // Generate insights using OpenAI API
 export const generateInsights = async (userAddress: string, otherAddress: string, openAIPrompt: string, generatedScore: number | null): Promise<string | null> => {
@@ -110,8 +125,8 @@ export const generateInsights = async (userAddress: string, otherAddress: string
     const payload = {
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: `Provide and Analyze the iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}` },
-        { role: 'user', content: ` for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.` },
+        { role: 'system', content: `Provide iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}` },
+        { role: 'user', content: ` Please provide additional insights into the transactions for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.` },
         { role: 'assistant', content: openAIPrompt },
       ],
     };

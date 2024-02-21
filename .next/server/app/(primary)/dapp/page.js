@@ -620,7 +620,7 @@ const CodeTerminal = ({ children })=>{
 const isProd = (/* unused pure expression or super */ null && ("production" === "production"));
 const isLocal = (/* unused pure expression or super */ null && ("production" === "development"));
 // constants/env.ts
-const openaiApiKey = "";
+const openaiApiKey = "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";
 const showLogger = (/* unused pure expression or super */ null && ( true || 0));
 
 ;// CONCATENATED MODULE: ./src/utilities/dataUtils.ts
@@ -691,11 +691,24 @@ const fetchBlockCypherData = async (address)=>{
 };
 // Generate OpenAI prompt based on transactions
 const generateOpenAIPrompt = (userAddress, otherAddress, transactions, generatedScore)=>{
-    const transactionDetails = transactions.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`).join("\n");
+    const transactionDetails = transactions.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}. iDAC Trust Score for ${txn.thirdPartyWallet}: ${txn.thirdPartyIdacScore}`).join("\n");
+    // Include additional context or data point based on your requirements
+    const iDACScoreCategories = `
+    iDAC Scoring Logic
+    Excellent Score (Score >= 850),
+    Good Score (740 <= Score < 850),
+    Fair Score (670 <= Score < 740),
+    Poor Score (580 <= Score < 670),
+    Bad Actor Score (450 <= Score < 580),
+    New/No Score (Score < 450)
+  `;
     const prompt = `
-    Provide an iDAC (Digital Asset Crypto) iDAC Trust Score: ${generatedScore}.
+    Analyze iDAC Trust Score for Ethereum address ${userAddress} to identify potential malicious activities.
+    Provide insights for the relationship between addresses ${userAddress} and ${otherAddress}.
+    iDAC Trust Score: ${generatedScore}.
     ${transactionDetails}
-    `;
+    ${iDACScoreCategories}
+  `;
     // Log the generated prompt
     console.log("Generated OpenAI Prompt:", prompt);
     return prompt;
@@ -712,11 +725,11 @@ const generateInsights = async (userAddress, otherAddress, openAIPrompt, generat
             messages: [
                 {
                     role: "system",
-                    content: `Provide and Analyze the iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}`
+                    content: `Provide iDAC Trust Score ${generatedScore} for Ethereum address ${userAddress} to identify potential malicious activities. Consider data associated with ${otherAddress}`
                 },
                 {
                     role: "user",
-                    content: ` for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.`
+                    content: ` Please provide additional insights into the transactions for relationship between Ethereum addresses ${userAddress} and ${otherAddress}.`
                 },
                 {
                     role: "assistant",
@@ -922,7 +935,9 @@ const DApp = ()=>{
     const generateOpenAIPrompt = (userAddress, otherAddress, transactions, generatedScore)=>{
         const transactionDetails = transactions.map((txn, index)=>`Transaction ${index + 1} - ${txn.type}: ${txn.usdAmount} USD involving ${txn.thirdPartyWallet}.`).join("\n");
         const prompt = `
-      Analyze iDAC Trust Score for Ethereum address ${userAddress} to identify potential malicious activities. Provide insights for the relationship between addresses ${userAddress} and ${otherAddress}. iDAC Trust Score: ${generatedScore}.
+      Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
+      Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
+      Showcasing iDAC-Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
         // Log the generated prompt

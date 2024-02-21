@@ -51,7 +51,7 @@ var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 var next_link = __webpack_require__(1440);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 ;// CONCATENATED MODULE: ./src/assets/imgs/logo.png
-/* harmony default export */ const logo = ({"src":"/_next/static/media/logo.c719f06a.png","height":168,"width":752,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAYAAABllJ3tAAAAOklEQVR42mMAAj8g1gNicxDmZ+KzBdLaLWbVSpNsO60ZgMAfiHWB2BSIvQSY+a2AtEyDaYXOJNtOJwDjVQjCKGBmWQAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":2});
+/* harmony default export */ const logo = ({"src":"/_next/static/media/logo.43f9332a.png","height":168,"width":720,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAYAAABllJ3tAAAAPUlEQVR4nGNkYGAIAOI7QMwExHxcjBy/v/3/wVykl3VHUUBBDqbgNhCD2NK8TNx/P//7erdQN5NTSVBRFgCzcg80z3BkRAAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":2});
 // EXTERNAL MODULE: ./node_modules/next/navigation.js
 var navigation = __webpack_require__(7114);
 ;// CONCATENATED MODULE: ./src/components/links/HeaderNavLink.tsx

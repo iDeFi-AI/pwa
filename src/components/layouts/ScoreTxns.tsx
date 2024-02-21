@@ -55,6 +55,8 @@ const getCategoryForScore = (score: number): string => {
 };
 
 const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions, overallScore }) => {
+  const sortedTransactions = [...transactions].sort((a, b) => b.thirdPartyIdacScore - a.thirdPartyIdacScore);
+
   return (
     <div className="score-transactions">
       <h2>Transaction History</h2>
@@ -75,7 +77,7 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions, overallScore }) => 
                   </tr>
                 </thead>
                 <tbody>
-                  {transactions.map((txn, index) => (
+                  {sortedTransactions.map((txn, index) => (
                     <tr key={index}>
                       <td className="score-transactions">
                         <div className="txn-hex">

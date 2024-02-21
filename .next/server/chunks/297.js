@@ -16,7 +16,7 @@ exports.modules = {
 /* harmony export */   tc: () => (/* binding */ signInWithEmailPassword),
 /* harmony export */   zb: () => (/* binding */ pushAiInsights)
 /* harmony export */ });
-/* unused harmony exports app, auth, database */
+/* unused harmony exports app, auth, database, storeSanctionedAddress */
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2856);
 /* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8241);
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9512);
@@ -50,6 +50,7 @@ const jsondataRef = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .ref */ 
 const useridRef = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .ref */ .iH)(database, "userid"); // new reference for JSON data
 const insightsRef = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .ref */ .iH)(database, "insights");
 const transactionsRef = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .ref */ .iH)(database, "transactions");
+const sanctionedAddressesRef = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .ref */ .iH)(database, "sanctionedAddresses"); // New reference for sanctioned addresses
 const storeJsonData = (jsonData)=>{
     return (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .push */ .VF)(jsondataRef, jsonData);
 };
@@ -58,6 +59,9 @@ const storeUserId = (userId)=>{
 };
 const pushTransaction = (transaction)=>{
     return (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__/* .push */ .VF)(transactionsRef, transaction);
+};
+const storeSanctionedAddress = (sanctionedAddress)=>{
+    return push(sanctionedAddressesRef, sanctionedAddress);
 };
 const pushAiInsights = (data)=>{
     console.log("Attempting to push insights:", data);

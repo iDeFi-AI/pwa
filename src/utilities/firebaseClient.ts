@@ -52,6 +52,7 @@ const jsondataRef = ref(database, 'jsondata');
 const useridRef = ref(database, 'userid'); // new reference for JSON data
 const insightsRef = ref(database, 'insights');
 const transactionsRef = ref(database, 'transactions');
+const sanctionedAddressesRef = ref(database, 'sanctionedAddresses'); // New reference for sanctioned addresses
 
 const storeJsonData = (jsonData: any) => {
   return push(jsondataRef, jsonData);
@@ -63,6 +64,10 @@ const storeUserId = (userId: any) => {
 
 const pushTransaction = (transaction: any) => {
   return push(transactionsRef, transaction);
+};
+
+const storeSanctionedAddress = (sanctionedAddress: any) => {
+  return push(sanctionedAddressesRef, sanctionedAddress);
 };
 
 const pushAiInsights = (data: InsightsResponse) => {
@@ -99,5 +104,6 @@ export {
   listenToTransactions,
   pushAiInsights,
   storeJsonData,
-  storeUserId, // include the new function
+  storeUserId,
+  storeSanctionedAddress, // include the new function
 };

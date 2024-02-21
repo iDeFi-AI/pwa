@@ -53,8 +53,10 @@ const HexagonScore: React.FC<HexagonScoreProps> = ({ seed, generatedScore }) => 
       return 'grey';
     }
   };
-
-  const color = generatedScore !== null ? getColorForScore(generatedScore) : 'grey';
+  
+  // or if you want to use generatedScore directly (keeping it for reference):
+  const color = getColorForScore(generatedScore !== null ? generatedScore : currentScore);
+  
 
   return (
     <div className={`hexagon-container ${color}`}>
