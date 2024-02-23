@@ -352,7 +352,6 @@ __webpack_require__.r(__webpack_exports__);
 const terms = ()=>{
     const sections = [
         {
-            imageUrl: "/neo.gif",
             title: "Terms of Service",
             intro: "Disclosure for Educational and Ethical Purposes",
             paragraphs: [

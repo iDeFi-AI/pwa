@@ -402,21 +402,21 @@ const InvestorPage = ()=>{
             imageAlt: "Company Logo"
         },
         {
-            title: "Overview of iDeFi-AI",
-            content: "Welcome to the innovative world of iDeFi-AI, where blockchain technology and artificial intelligence converge to shape the future of decentralized finance (DeFi).",
+            title: "Overview of iDeFi.ai",
+            content: "Welcome to the innovative world of iDeFi.ai, where blockchain technology and artificial intelligence converge to shape the future of decentralized finance (DeFi).",
             paragraphs: [
                 "Our vision is to revolutionize the financial landscape by harnessing the power of cutting-edge technology. Through the fusion of blockchain, artificial intelligence and Quantum Technologies, we are paving the way for a more inclusive and efficient financial ecosystem.",
-                "At iDeFi-AI, we are committed to enhancing security within the DeFi space. Our innovative solutions are designed to minimize fraud, reduce risks, and provide users with a safe environment to manage their digital assets.",
+                "At iDeFi.ai, we are committed to enhancing security within the DeFi space. Our innovative solutions are designed to minimize fraud, reduce risks, and provide users with a safe environment to manage their digital assets.",
                 "Join us on this exciting journey into the future of finance, where smart contracts, decentralized applications, and AI-driven insights will become the norm. Together, we are shaping the path for a more accessible and interconnected financial world."
             ]
         },
         {
             title: "Our Mission",
-            content: "At iDeFi-AI, our mission is to create a financial ecosystem that prioritizes security, efficiency, and inclusivity. We believe that the synergy between AI and blockchain is the foundation upon which the future of DeFi is built.",
+            content: "At iDeFi.ai, our mission is to create a financial ecosystem that prioritizes security, efficiency, and inclusivity. We believe that the synergy between AI and blockchain is the foundation upon which the future of DeFi is built.",
             paragraphs: [
                 "Our mission represents a commitment to a new era of financial services. We envision a future where anyone, regardless of their background or geographic location, can participate in the global financial system.",
                 " Security is paramount in the decentralized world. Our dedication to building a secure environment means that users can have confidence in their financial transactions. By leveraging the power of AI and blockchain, we're paving the way for robust security measures that can withstand the challenges of the digital age.",
-                " Inclusivity is a core value we hold dear. We aim to break down barriers and make financial services accessible to everyone. By embracing blockchain's transparency and AI's adaptability, we're creating an ecosystem that welcomes users from all walks of life. This inclusivity is what makes iDeFi-AI stand out in the world of DeFi."
+                " Inclusivity is a core value we hold dear. We aim to break down barriers and make financial services accessible to everyone. By embracing blockchain's transparency and AI's adaptability, we're creating an ecosystem that welcomes users from all walks of life. This inclusivity is what makes iDeFi.ai stand out in the world of DeFi."
             ]
         },
         {
@@ -430,7 +430,7 @@ const InvestorPage = ()=>{
         },
         {
             title: "Our Commitment",
-            content: "iDeFi-AI is at the forefront of the DeFi revolution. Our commitment to user-friendliness, robust security measures, and AI-driven solutions positions us as a trailblazer in the decentralized finance sector.",
+            content: "iDeFi.ai is at the forefront of the DeFi revolution. Our commitment to user-friendliness, robust security measures, and AI-driven solutions positions us as a trailblazer in the decentralized finance sector.",
             paragraphs: [
                 "Being at the forefront of the DeFi revolution means we're the driving force behind the transformation of financial services. Our commitment to staying ahead of the curve is unwavering. We're setting the standard for what DeFi can and should be.",
                 " User-friendliness is a key aspect of our commitment. We understand that DeFi can be complex, and we're making it as user-friendly as possible. Our user-centric approach ensures that anyone, regardless of their technical expertise, can seamlessly navigate and benefit from our platform.",
@@ -523,13 +523,13 @@ const InvestorPage = ()=>{
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/idac",
-                                    children: "iDAC - Digital Risk Scoring"
+                                    children: "iDAR - Digital Risk Scoring"
                                 })
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     href: "/ipoc",
-                                    children: "POC - Initial Proof of Concepts"
+                                    children: "POCs - Initial Proof of Concepts"
                                 })
                             })
                         ]

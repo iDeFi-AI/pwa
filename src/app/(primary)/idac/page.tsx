@@ -106,33 +106,33 @@ const IDAC: React.FC = () => {
     },
     {
       title: "Digital Asset Crypto Score",
-      paragraphs: ["This section unveils the concept of the iDeFi Digital Asset Crypto Score (iDAC Score), a groundbreaking development in the world of decentralized finance (DeFi). The iDAC Score represents a paradigm shift in establishing a Trust Score among users who are engaged in cryptocurrency transactions. It offers innovative solutions to redefine the future of DeFi, while also accommodating traditional financial institutions (TradFi) and trusted centralized financial exchanges (CeFi). It bridges the gap between digital and traditional finance, shaping the evolution of the entire financial ecosystem."]
+      paragraphs: ["This section unveils the concept of the iDeFi Digital Asset Crypto Score (iDAR Score), a groundbreaking development in the world of decentralized finance (DeFi). The iDAR Score represents a paradigm shift in establishing a Trust Score among users who are engaged in cryptocurrency transactions. It offers innovative solutions to redefine the future of DeFi, while also accommodating traditional financial institutions (TradFi) and trusted centralized financial exchanges (CeFi). It bridges the gap between digital and traditional finance, shaping the evolution of the entire financial ecosystem."]
     },
     {
       title: "Empowering Trust Among Crypto Users",
-      intro: "The iDAC Score focuses on empowering trust among users in the cryptocurrency ecosystem:",
+      intro: "The iDAR Score focuses on empowering trust among users in the cryptocurrency ecosystem:",
       paragraphs: [
-        "Dynamic Trust Assessment: The iDAC Score employs dynamic algorithms to assess and establish trust among users in real-time. This dynamic approach ensures a more accurate and up-to-date trust evaluation, preventing potential issues.",
+        "Dynamic Trust Assessment: The iDAR Score employs dynamic algorithms to assess and establish trust among users in real-time. This dynamic approach ensures a more accurate and up-to-date trust evaluation, preventing potential issues.",
         "Multi-Dimensional Analysis: Consideration of various trust dimensions, including transaction history, user behavior patterns, and community reputation. This comprehensive analysis offers a holistic view of the trustworthiness of individuals and entities.",
-        "Preventive Measures: Leveraging artificial intelligence, the iDAC Score uses predictive analytics to identify potential risks before they materialize. This proactive approach empowers users and institutions to take preventive measures against bad actors, hackers, scammers, and other threats."
+        "Preventive Measures: Leveraging artificial intelligence, the iDAR Score uses predictive analytics to identify potential risks before they materialize. This proactive approach empowers users and institutions to take preventive measures against bad actors, hackers, scammers, and other threats."
       ]
     },
     {
-      title: "Ensuring Security with iDAC Trust Score",
-      intro: "The iDAC Trust Score ensures security and reliability in cryptocurrency transactions:",
+      title: "Ensuring Security with iDAR Trust Score",
+      intro: "The iDAR Trust Score ensures security and reliability in cryptocurrency transactions:",
       paragraphs: [
-        "Trust Verification: Individuals and entities with higher iDAC Trust Scores are verified as trustworthy participants in the cryptocurrency ecosystem. This verification enhances security and reduces the risk of fraudulent activities.",
-        "Community-driven Trust: The iDAC Score incorporates community feedback and reputation to further enhance trust assessment. Users actively contribute to the trustworthiness evaluation, creating a robust and decentralized trust network.",
-        "Cross-Sector Applicability: The iDAC Trust Score extends its applicability beyond decentralized finance (DeFi) to include traditional financial institutions (TradFi) and centralized financial exchanges (CeFi). It becomes a standardized measure for establishing trust in digital asset activities across different financial sectors."
+        "Trust Verification: Individuals and entities with higher iDAR Trust Scores are verified as trustworthy participants in the cryptocurrency ecosystem. This verification enhances security and reduces the risk of fraudulent activities.",
+        "Community-driven Trust: The iDAR Score incorporates community feedback and reputation to further enhance trust assessment. Users actively contribute to the trustworthiness evaluation, creating a robust and decentralized trust network.",
+        "Cross-Sector Applicability: The iDAR Trust Score extends its applicability beyond decentralized finance (DeFi) to include traditional financial institutions (TradFi) and centralized financial exchanges (CeFi). It becomes a standardized measure for establishing trust in digital asset activities across different financial sectors."
       ]
     },
     {
       title: "Promoting Responsible Participation",
-      intro: "The iDAC Trust Score encourages responsible participation in the cryptocurrency ecosystem:",
+      intro: "The iDAR Trust Score encourages responsible participation in the cryptocurrency ecosystem:",
       paragraphs: [
-        "Risk Mitigation: Users can make informed decisions based on the iDAC Trust Score, mitigating risks associated with transactions. It promotes responsible engagement and discourages malicious activities.",
-        "Secure Transactions: Traditional financial institutions can integrate the iDAC Trust Score into their risk assessment frameworks, enhancing the security of digital asset transactions. This integration bridges the gap between traditional and digital finance, creating a safer environment for all participants.",
-        "Financial Inclusion: Within traditional finance, the iDAC Trust Score promotes financial inclusion and aligns with the evolving financial landscape. It acts as a catalyst for building trust and credibility among participants in digital asset activities."
+        "Risk Mitigation: Users can make informed decisions based on the iDAR Trust Score, mitigating risks associated with transactions. It promotes responsible engagement and discourages malicious activities.",
+        "Secure Transactions: Traditional financial institutions can integrate the iDAR Trust Score into their risk assessment frameworks, enhancing the security of digital asset transactions. This integration bridges the gap between traditional and digital finance, creating a safer environment for all participants.",
+        "Financial Inclusion: Within traditional finance, the iDAR Trust Score promotes financial inclusion and aligns with the evolving financial landscape. It acts as a catalyst for building trust and credibility among participants in digital asset activities."
       ]
     }
   ];
@@ -191,11 +191,11 @@ const IDAC: React.FC = () => {
                   placeholder=" ETH, BTC or ATOM"
                   value={userAddress}
                   onChange={(e) => setUserAddress(e.target.value)}
-                  style={{ backgroundColor: '#f0f0f0', color: 'black' }}
+                  style={{ backgroundColor: '#f0f0f0', color: 'black', textAlign: 'center' }}
                 />
                 <button
                   onClick={handleGenerateScore}
-                  style={{ backgroundColor: '#913d88', color: 'white', fontWeight: '600', padding: '10px' }}
+                  style={{ backgroundColor: '#913d88', color: 'white', padding: '10px', borderRadius: '10px' }}
                 >
                   Generate Score
                 </button>

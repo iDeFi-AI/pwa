@@ -200,7 +200,7 @@ const DApp: React.FC = () => {
     const prompt = `
       Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
       Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
-      Showcasing iDAC-Trust Score: ${generatedScore}.
+      Showcasing iDAR-Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
   
@@ -229,13 +229,13 @@ const DApp: React.FC = () => {
   return (
     <div className="main-container">
       <Head>
-        <title>dAPP - iDAC</title>
+        <title>dAPP - iDAR</title>
       </Head>
       <section className="bg-black">
         <div className="layout flex min-h-screen flex-col items-center justify-center py-12 text-center">
-          <h1 className="text-white font-bold text-4xl mb-6">dAPP - iDAC</h1>
+          <h1 className="text-white font-bold text-4xl mb-6">dAPP - iDAR</h1>
           <h4>Connect wallet or enter address</h4>
-          <p>Generate iDAC Trust Score with DeFi-AI</p>
+          <p>Generate iDAR Trust Score with DeFi-AI</p>
           <hr
             style={{
               border: 'none',
@@ -306,7 +306,7 @@ const DApp: React.FC = () => {
           )}
           {/* Display generated insights */}
           <div className="header container">
-            <h2>iDAC AI:</h2>
+            <h2>iDAR AI:</h2>
             <CodeTerminal>{insights}</CodeTerminal>
           </div>
         </div>

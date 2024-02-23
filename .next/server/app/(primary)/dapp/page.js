@@ -937,7 +937,7 @@ const DApp = ()=>{
         const prompt = `
       Analyze Ethereum address ${userAddress} for potential malicious activities or bad actors. Look for patterns, anomalies, or any indicators that may suggest malicious behavior.
       Provide insights for the relationship between Ethereum addresses ${userAddress} and ${otherAddress}. Consider the unique addresses involved ${otherAddress}.
-      Showcasing iDAC-Trust Score: ${generatedScore}.
+      Showcasing iDAR-Trust Score: ${generatedScore}.
       ${transactionDetails}
     `;
         // Log the generated prompt
@@ -962,7 +962,7 @@ const DApp = ()=>{
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx((noop_head_default()), {
                 children: /*#__PURE__*/ jsx_runtime_.jsx("title", {
-                    children: "dAPP - iDAC"
+                    children: "dAPP - iDAR"
                 })
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("section", {
@@ -972,13 +972,13 @@ const DApp = ()=>{
                     children: [
                         /*#__PURE__*/ jsx_runtime_.jsx("h1", {
                             className: "text-white font-bold text-4xl mb-6",
-                            children: "dAPP - iDAC"
+                            children: "dAPP - iDAR"
                         }),
                         /*#__PURE__*/ jsx_runtime_.jsx("h4", {
                             children: "Connect wallet or enter address"
                         }),
                         /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Generate iDAC Trust Score with DeFi-AI"
+                            children: "Generate iDAR Trust Score with DeFi-AI"
                         }),
                         /*#__PURE__*/ jsx_runtime_.jsx("hr", {
                             style: {
@@ -1073,7 +1073,7 @@ const DApp = ()=>{
                             className: "header container",
                             children: [
                                 /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                                    children: "iDAC AI:"
+                                    children: "iDAR AI:"
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx(layouts_CodeTerminal, {
                                     children: insights

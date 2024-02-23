@@ -87,11 +87,11 @@ const menuItems = [
         url: `b1h0`
     },
     {
-        label: `iDAC`,
+        label: `iDAR`,
         url: `idac`
     },
     {
-        label: `POC`,
+        label: `POCs`,
         url: `ipoc`
     },
     {

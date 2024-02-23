@@ -12,7 +12,6 @@ interface SectionProps {
 const terms: React.FC = () => {
   const sections: SectionProps[] = [
     {
-      imageUrl: '/neo.gif',
       title: 'Terms of Service',
       intro: 'Disclosure for Educational and Ethical Purposes',
       paragraphs: [

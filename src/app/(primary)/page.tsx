@@ -88,14 +88,14 @@ export default function HomePage() {
   return (
     <main>
   <Head>
-    <title>iDeFi-AI</title>
+    <title>iDeFi.ai</title>
   </Head>
   <section className='bg-black'>
     <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
       <Image src='/cube.gif' alt="Company Logo" width={300} height={100} />
-      <h1 className='mt-4 text-white'> iDeFi-AI</h1>
+      <h1 className='mt-4 text-white'> iDeFi.ai</h1>
       <p className='mt-2 text-sm text-white-800'>
-        Decentralized Artifical Intelligent Blockchain Startup
+        Decentralized Artifical Intelligent Startup
       </p>
       <br></br>
       <hr style={{border: 'none', borderBottom: '3px solid grey', width: '100%'}} />

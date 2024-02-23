@@ -40,7 +40,7 @@ const TEAM: React.FC = () => {
         <h2>Meet the Team</h2>
         <h4>Each team member comes from an extraordinary background</h4>
         <br></br>
-        <p>To protect the identities and those involved at iDeFi-AI.<br></br>Our team has requested to remain anonymous until further notice is given</p>
+        <p>To protect the identities and those involved at iDeFi.ai<br></br>Our team has requested to remain anonymous until further notice is given</p>
       </div>
 
       <div className="container header team-container">

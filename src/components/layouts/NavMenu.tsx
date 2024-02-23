@@ -10,8 +10,8 @@ import HeaderNavLink from '../links/HeaderNavLink';
 
 const menuItems = [
   { label: `B1H0`, url: `b1h0` },
-  { label: `iDAC`, url: `idac` },
-  { label: `POC`, url: `ipoc` },
+  { label: `iDAR`, url: `idac` },
+  { label: `POCs`, url: `ipoc` },
   { label: `TEAM`, url: `team` },
   { label: 'Log out', url: '/' },
   {label: 'Launch App', url: 'dapp'}

@@ -2,11 +2,11 @@
   "/_not-found": "/_not-found",
   "/(primary)/page": "/",
   "/api/hello/route": "/api/hello",
-  "/(primary)/dataroom/page": "/dataroom",
-  "/(primary)/dapp/page": "/dapp",
   "/(primary)/b1h0/page": "/b1h0",
-  "/(primary)/idac/page": "/idac",
-  "/(primary)/team/page": "/team",
+  "/(primary)/dapp/page": "/dapp",
+  "/(primary)/dataroom/page": "/dataroom",
   "/(primary)/ipoc/page": "/ipoc",
+  "/(primary)/team/page": "/team",
+  "/(primary)/idac/page": "/idac",
   "/(primary)/terms/page": "/terms"
 }

@@ -382,7 +382,7 @@ const TEAM = ()=>{
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                         children: [
-                            "To protect the identities and those involved at iDeFi-AI.",
+                            "To protect the identities and those involved at iDeFi.ai",
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
                             "Our team has requested to remain anonymous until further notice is given"
                         ]

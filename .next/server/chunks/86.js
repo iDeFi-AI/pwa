@@ -49,7 +49,7 @@ var react_shared_subset = __webpack_require__(2947);
 var globals = __webpack_require__(4315);
 ;// CONCATENATED MODULE: ./src/constants/config.ts
 const siteConfig = {
-    title: "iDeFi-AI",
+    title: "iDeFi.ai",
     description: "Data Room",
     /** Without additional '/' on the end, e.g. https://theodorusclarence.com */ url: "http://idefi.ai"
 };
