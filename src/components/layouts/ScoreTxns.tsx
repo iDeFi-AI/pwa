@@ -178,8 +178,7 @@ const ScoreTxns: React.FC<ScoreTxnsProps> = ({ transactions, overallScore }) => 
           color: red;
         }
         .Bad {
-          color: black;
-          border: 1px solid white; /* Add the desired border style for the "Bad" category */
+          color: white;
         }
         .New {
           color: grey;

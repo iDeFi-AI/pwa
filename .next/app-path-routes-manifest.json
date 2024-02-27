@@ -5,8 +5,8 @@
   "/(primary)/b1h0/page": "/b1h0",
   "/(primary)/dapp/page": "/dapp",
   "/(primary)/dataroom/page": "/dataroom",
-  "/(primary)/ipoc/page": "/ipoc",
   "/(primary)/team/page": "/team",
-  "/(primary)/idac/page": "/idac",
-  "/(primary)/terms/page": "/terms"
+  "/(primary)/ipoc/page": "/ipoc",
+  "/(primary)/terms/page": "/terms",
+  "/(primary)/idac/page": "/idac"
 }

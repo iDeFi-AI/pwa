@@ -570,31 +570,18 @@ var ScoreTxns = __webpack_require__(9586);
 ;// CONCATENATED MODULE: ./src/components/layouts/CodeTerminal.tsx
 
 
-const MagicOcean = ({ setMessage, script })=>{
-    const lines = script.split("\n");
-    const [index, setIndex] = (0,react_.useState)(0);
-    (0,react_.useEffect)(()=>{
-        const timer = setInterval(()=>{
-            if (index < lines.length) {
-                setMessage((prevMessage)=>prevMessage + (prevMessage ? "\n" : "") + lines[index]);
-                setIndex(index + 1);
-            } else {
-                clearInterval(timer);
-            }
-        }, 1000); // Adjust the interval as needed
-        return ()=>{
-            clearInterval(timer);
-        };
-    }, [
-        lines,
-        setMessage,
-        index
-    ]);
-    return null;
-};
 const CodeTerminal = ({ children })=>{
-    const [message, setMessage] = (0,react_.useState)("");
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+    const [messages, setMessages] = (0,react_.useState)([]);
+    (0,react_.useEffect)(()=>{
+        // Extract insights response from children
+        const insightsResponse = children.match(/Insights response:([\s\S]*)/)?.[1]?.trim() || children.trim();
+        // Split insights response into individual messages
+        const messageList = insightsResponse.split("\n");
+        setMessages(messageList);
+    }, [
+        children
+    ]);
+    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
         id: "App:CodeTerminal",
         style: {
             backgroundColor: "#000",
@@ -605,13 +592,12 @@ const CodeTerminal = ({ children })=>{
             whiteSpace: "pre-wrap",
             wordWrap: "break-word"
         },
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx(MagicOcean, {
-                setMessage: setMessage,
-                script: children
-            }),
-            message
-        ]
+        children: messages.map((message, index)=>/*#__PURE__*/ jsx_runtime_.jsx("div", {
+                style: {
+                    marginBottom: "2em"
+                },
+                children: message
+            }, index))
     });
 };
 /* harmony default export */ const layouts_CodeTerminal = (CodeTerminal);
@@ -620,7 +606,7 @@ const CodeTerminal = ({ children })=>{
 const isProd = (/* unused pure expression or super */ null && ("production" === "production"));
 const isLocal = (/* unused pure expression or super */ null && ("production" === "development"));
 // constants/env.ts
-const openaiApiKey = "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";
+const openaiApiKey = "";
 const showLogger = (/* unused pure expression or super */ null && ( true || 0));
 
 ;// CONCATENATED MODULE: ./src/utilities/dataUtils.ts

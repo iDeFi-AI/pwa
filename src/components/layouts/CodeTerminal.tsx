@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const MagicOcean: React.FC<{ setMessage: React.Dispatch<React.SetStateAction<string>>; script: string }> = ({ setMessage, script }) => {
-  const lines = script.split('\n');
-  const [index, setIndex] = useState(0);
+export const CodeTerminal: React.FC<CodeTerminalProps> = ({ children }) => {
+  const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (index < lines.length) {
-        setMessage((prevMessage) => prevMessage + (prevMessage ? '\n' : '') + lines[index]);
-        setIndex(index + 1);
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000); // Adjust the interval as needed
-    return () => {
-      clearInterval(timer);
-    };
-  }, [lines, setMessage, index]);
-
-  return null;
-};
-
-export const CodeTerminal: React.FC<CodeTerminalProps> = ({ children }) => {
-  const [message, setMessage] = useState("");
+    // Extract insights response from children
+    const insightsResponse = children.match(/Insights response:([\s\S]*)/)?.[1]?.trim() || children.trim();
+    // Split insights response into individual messages
+    const messageList = insightsResponse.split('\n');
+    setMessages(messageList);
+  }, [children]);
 
   return (
     <div
@@ -37,8 +24,9 @@ export const CodeTerminal: React.FC<CodeTerminalProps> = ({ children }) => {
         wordWrap: 'break-word', // Break words that are too long
       }}
     >
-      <MagicOcean setMessage={setMessage} script={children} />
-      {message}
+      {messages.map((message, index) => (
+        <div key={index} style={{ marginBottom: '2em' }}>{message}</div>
+      ))}
     </div>
   );
 };
