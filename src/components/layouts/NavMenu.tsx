@@ -4,15 +4,16 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import NextImage from 'next/image';
 import Link from 'next/link';
 
-import LogoImage from '@/assets/imgs/logo.png';
+import LogoImage from '@/assets/imgs/mainlogo.png';
 
 import HeaderNavLink from '../links/HeaderNavLink';
 
 const menuItems = [
   { label: `B1H0`, url: `b1h0` },
-  { label: `iDAR`, url: `idac` },
+  { label: `iDAC`, url: `idac` },
   { label: `POCs`, url: `ipoc` },
   { label: `TEAM`, url: `team` },
+  { label: `API`, url: `https://api.idefi.ai`},
   { label: 'Log out', url: '/' },
   {label: 'Launch App', url: 'dapp'}
 ];
@@ -61,7 +62,7 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                   {menuItems.map((item) => (
                     <HeaderNavLink href={item.url} key={item.url}>
                       {item.label === 'Launch App' ? (
-                        <button className='text-white bg-purple-400 px-3 py-2 rounded-full'>
+                        <button className='text-white bg-lightlaven px-3 py-2 rounded-full'>
                           {item.label}
                         </button>
                       ) : (
@@ -72,7 +73,7 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                 </div>
               </div>
               <div className='flex items-center lg:hidden'>
-                <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-400'>
+                <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lightlaven'>
                   <span className='absolute -inset-0.5' />
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
@@ -91,9 +92,9 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
               {menuItems.map((item) => {
                 return (
                   <Link href={item.url} key={item.label}>
-                  <div className='block py-2 text-base font-medium text-gray-600 hover:text-purple-400'>
+                  <div className='block py-2 text-base font-medium text-gray-600 hover:text-lightlaven'>
                     {item.label === 'Launch App' ? (
-                      <button className='text-white bg-purple-400 px-3 py-2 rounded-full'>
+                      <button className='text-white bg-lightlaven px-3 py-2 rounded-full'>
                         {item.label}
                       </button>
                     ) : (

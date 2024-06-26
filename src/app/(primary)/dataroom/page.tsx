@@ -123,7 +123,7 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
             <Link href="/b1h0">B1H0 - B1ack H0rnet</Link>
           </li>
           <li>
-            <Link href="/idac">iDAR - Digital Risk Scoring</Link>
+            <Link href="/idac">iDAC - Digital Risk Scoring</Link>
           </li>
           <li>
             <Link href="/ipoc">POCs - Initial Proof of Concepts</Link>
