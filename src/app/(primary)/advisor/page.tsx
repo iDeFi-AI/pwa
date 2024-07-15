@@ -10,7 +10,7 @@ interface SectionProps {
   imageAlt?: string;
 }
 
-const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
+const FinancialAdvisorPage: React.FC = () => {
   const sections: SectionProps[] = [
     {
       title: 'iDeFi.AI Financial Advisory Insights',
@@ -30,9 +30,9 @@ const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
       content: 'At iDeFi.ai, our approach is centered on creating a financial ecosystem that prioritizes security, efficiency, and inclusivity, setting us apart from competitors like Noves.fi.',
       paragraphs: [
         "While Noves.fi focuses on integrating traditional financial metrics, iDeFi.ai combines the power of blockchain and AI to offer deeper insights and advanced security features.",
-        " Security: Our AI-driven risk scoring models provide precise assessments, ensuring your investments are protected against potential threats.",
-        " Efficiency: By analyzing money flows, we streamline the onboarding process and enhance user experience, making financial management seamless.",
-        " Inclusivity: We believe in breaking down barriers and making financial services accessible to everyone, leveraging blockchain's transparency and AI's adaptability.",
+        "Security: Our AI-driven risk scoring models provide precise assessments, ensuring your investments are protected against potential threats.",
+        "Efficiency: By analyzing money flows, we streamline the onboarding process and enhance user experience, making financial management seamless.",
+        "Inclusivity: We believe in breaking down barriers and making financial services accessible to everyone, leveraging blockchain transparency and AI adaptability.",
       ],
     },
     {
@@ -40,54 +40,51 @@ const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
       content: 'Our core services include risk scoring, on/off-boarding insights, sentiment analysis, and actionable moments for better financial decision-making.',
       paragraphs: [
         "Risk Scoring: Our AI-driven models provide precise risk assessments to flag potential issues and ensure informed investment decisions.",
-        " On/Off Boarding: We analyze money flows to streamline the onboarding process and enhance user experience.",
-        " Sentiment Analysis: By monitoring market sentiment, especially around Real-World Assets (RWA), we identify value, growth, and decline trends.",
-        " Actionable Moments: Our system triggers alerts for tax consequences, investment opportunities, and other critical financial events.",
-        " Other Outcomes: We continuously innovate to provide additional insights and solutions tailored to your financial needs.",
+        "On/Off Boarding: We analyze money flows to streamline the onboarding process and enhance user experience.",
+        "Sentiment Analysis: By monitoring market sentiment, especially around Real-World Assets (RWA), we identify value, growth, and decline trends.",
+        "Actionable Moments: Our system triggers alerts for tax consequences, investment opportunities, and other critical financial events.",
+        "Other Outcomes: We continuously innovate to provide additional insights and solutions tailored to your financial needs.",
       ],
     },
     {
       title: 'Our Commitment',
       content: 'iDeFi.ai is at the forefront of the financial advisory revolution. Our commitment to user-friendliness, robust security measures, and AI-driven solutions positions us as a leader in the sector.',
       paragraphs: [
-        "Being at the forefront means we're driving the transformation of financial advisory services. Our commitment to innovation and excellence is unwavering.",
-        " User-friendliness is key. We ensure our platform is accessible to all users, regardless of their technical expertise.",
-        " Robust security measures are our foundation. We continually enhance our security protocols to protect your digital assets.",
-        " AI-driven solutions are the future. By integrating AI capabilities, we offer unparalleled efficiency and innovation in financial advisory.",
+        "Being at the forefront means that we are driving the transformation of financial advisory services. Our commitment to innovation and excellence is unwavering.",
+        "User-friendliness is key. We ensure our platform is accessible to all users, regardless of their technical expertise.",
+        "Robust security measures are our foundation. We continually enhance our security protocols to protect your digital assets.",
+        "AI-driven solutions are the future. By integrating AI capabilities, we offer unparalleled efficiency and innovation in financial advisory.",
       ],
     },
     {
       title: 'Raw Blockchain Data vs. iDeFi.AI Insights',
       content: 'See how we transform raw blockchain data into actionable insights:',
       paragraphs: [
-        "Here's an example of raw blockchain data and how we transform it into a more digestible format for financial advisors.",
+        "Here is an example of raw blockchain data and how we transform it into a more digestible format for financial advisors.",
       ],
     },
   ];
 
   return (
-    <div>
-      <div className="container header layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center">
+    <div className="bg-black text-white min-h-screen">
+      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         {sections.map((section, index) => (
-          <div className="section" key={index}>
-            <h2>{section.title}</h2>
-            <h4>{section.content}</h4>
-            {index !== 0 && ( // Add this condition to exclude line break in the first section
-              <br />
-            )}
-            {section.title === 'Welcome to iDeFi.ai: The Future of Financial Advisory' && ( // Check if this is the specific section
+          <div key={index} className="mb-12">
+            <h2 className="text-3xl font-bold mb-4">{section.title}</h2>
+            <h4 className="text-xl mb-4">{section.content}</h4>
+            {index !== 0 && <br />}
+            {section.title === 'Welcome to iDeFi.ai: The Future of Financial Advisory' && (
               <p>
                 {' '}
-                <Link 
-                  href="/terms"
-                  className="text-purple-450 underline hover:underline">Review our Educational and Ethical Disclosure 
+                <Link href="/terms">
+                  <a className="text-purple-450 underline hover:underline">Review our Educational and Ethical Disclosure</a>
                 </Link>{' '}
               </p>
             )}
             {section.paragraphs && (
               <div>
                 {section.paragraphs.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="mb-4">
+                  <p key={pIndex} className="mb-4 text-lightlaven">
                     {paragraph}
                   </p>
                 ))}
@@ -95,25 +92,25 @@ const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
             )}
             <br />
             {section.imageUrl && (
-              <div className="image-container">
+              <div className="mt-4">
                 <Image
                   layout="responsive"
                   objectFit="cover"
-                  width={200}
-                  height={300}
+                  width={800}
+                  height={400}
                   src={section.imageUrl}
                   alt={section.imageAlt ?? section.title}
+                  className="rounded-md"
                 />
               </div>
             )}
-            {index !== 0 && ( // Check if it's not the first section
-              <hr style={{ border: 'none', borderRadius: '5px', borderBottom: '3px solid grey', width: '100%', margin: '90px 0' }} />
-            )}
+            {index !== 0 && <hr className="my-12 border-t-2 border-gray-700 w-full" />}
           </div>
         ))}
-        <div className="section">
-          <h2>Raw Blockchain Data Response</h2>
-          <pre className="bg-gray-100 p-4 rounded-md text-left overflow-auto">
+
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-4">Raw Blockchain Data Response</h2>
+          <pre className="bg-gray-400 p-4 rounded-md text-left overflow-auto max-h-96">
             {`{
   "status": "1",
   "message": "OK",
@@ -163,10 +160,10 @@ const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
 }`}
           </pre>
         </div>
-
-        <div className="section">
-          <h2>Transformed iDeFi.AI JSON Response</h2>
-          <pre className="bg-gray-100 p-4 rounded-md text-left overflow-auto">
+        
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-4">Transformed iDeFi.AI JSON Response</h2>
+          <pre className="bg-gray-400 p-4 rounded-md text-left overflow-auto max-h-96">
             {`{
   "address": "0x123...",
   "status": "Pass",
@@ -213,9 +210,9 @@ const FinancialAdvisorPage: React.FC<FinancialAdvisorPageProps> = () => {
           </pre>
         </div>
 
-        <div className="section">
-          <h2>Why Choose iDeFi.AI?</h2>
-          <p>
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-4">Why Choose iDeFi.AI?</h2>
+          <p className="text-lightlaven">
             Our AI-driven insights transform complex blockchain data into actionable recommendations that financial advisors can use to make informed decisions for their clients. Whether it's identifying risk levels, monitoring transaction patterns, or providing tax-related information, iDeFi.AI offers a comprehensive solution that makes understanding blockchain data simple and effective.
           </p>
         </div>
