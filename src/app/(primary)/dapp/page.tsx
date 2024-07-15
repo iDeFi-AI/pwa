@@ -246,7 +246,7 @@ const DApp: React.FC = () => {
             }}
           />
           <div className="image-container" style={{ padding: '50px' }}>
-            <Image src="/idacscore.png" alt="idacscore" width={1600} height={1000} />
+            <Image src="/newidaclogo.png" alt="idacscore" width={1600} height={1000} />
           </div>
           {generatedScore !== null && (
             <div className={` ${getColorForScore(generatedScore)}`}>

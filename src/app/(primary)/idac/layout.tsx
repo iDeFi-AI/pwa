@@ -6,7 +6,7 @@ import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
   title: 'Digital Asset Score',
-  description: 'Please remember, you are underneath an NDA',
+  description: 'A feature showcasing Risk Scoring of Digital Assets',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

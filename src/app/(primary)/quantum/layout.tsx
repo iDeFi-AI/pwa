@@ -5,8 +5,8 @@ import Footer from '@/components/layouts/Footer'
 import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
-  title: 'B1ack H0rnet',
-  description: 'Feature for mapping out mixers and dust checks',
+  title: 'Quantum',
+  description: 'Learn about how we are leveragin Quantum',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

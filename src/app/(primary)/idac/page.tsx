@@ -102,7 +102,7 @@ const IDAC: React.FC = () => {
 
   const sections: SectionProps[] = [
     {
-      imageUrl: "/idacscorelogo.png"
+      imageUrl: "/newidaclogo.png"
     },
     {
       title: "Digital Asset Crypto Score",
@@ -180,7 +180,7 @@ const IDAC: React.FC = () => {
               <>
                 <div className="image-container container header">
                   <Image
-                    src='/idacscore.png'
+                    src='/newidaclogo.png'
                     alt='idacscore'
                     width={1600}
                     height={1000}

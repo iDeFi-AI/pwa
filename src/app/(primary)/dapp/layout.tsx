@@ -6,7 +6,7 @@ import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
   title: 'dApp',
-  description: 'AI-POC DApp',
+  description: 'Integrated AI dApp',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

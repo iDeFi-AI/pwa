@@ -6,7 +6,7 @@ import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
   title: 'Data Room',
-  description: 'Please remember, you are underneath an NDA',
+  description: 'Welcome to the Data Room',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

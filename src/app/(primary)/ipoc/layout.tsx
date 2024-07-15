@@ -6,7 +6,7 @@ import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
   title: 'Proof of Concepts',
-  description: 'Please remember, you are underneath an NDA',
+  description: 'Initial Proof of Concepts with Running Scripts',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

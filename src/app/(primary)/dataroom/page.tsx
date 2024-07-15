@@ -118,6 +118,7 @@ const InvestorPage: React.FC<InvestorPageProps> = () => {
       </div>
       <div className="container header">
         <h2>Explore Our Key Initiatives</h2>
+        <p>These key initiatives are being constantly improved, built out and tested in our API Suite</p>
         <ul>
           <li>
             <Link href="/b1h0">B1H0 - B1ack H0rnet</Link>

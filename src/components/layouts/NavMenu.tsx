@@ -9,11 +9,12 @@ import LogoImage from '@/assets/imgs/mainlogo.png';
 import HeaderNavLink from '../links/HeaderNavLink';
 
 const menuItems = [
-  { label: `B1H0`, url: `b1h0` },
+  { label: `API`, url: `api`},
+  { label: `POC`, url: `ipoc` },
   { label: `iDAC`, url: `idac` },
-  { label: `POCs`, url: `ipoc` },
+  { label: `B1H0`, url: `b1h0` },
   { label: `TEAM`, url: `team` },
-  { label: `API`, url: `https://api.idefi.ai`},
+  { label: `QUANTUM`, url: `quantum`},
   { label: 'Log out', url: '/' },
   {label: 'Launch App', url: 'dapp'}
 ];

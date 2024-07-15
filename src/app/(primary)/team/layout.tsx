@@ -5,7 +5,7 @@ import Footer from '@/components/layouts/Footer'
 import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
-  title: 'Team of 3',
+  title: 'Meet the Team',
   description: 'Please remember, you are underneath an NDA',
 }
 
