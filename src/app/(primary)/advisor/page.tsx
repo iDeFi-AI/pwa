@@ -213,7 +213,7 @@ const FinancialAdvisorPage: React.FC = () => {
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose iDeFi.AI?</h2>
           <p className="text-lightlaven">
-            Our AI-driven insights transform complex blockchain data into actionable recommendations that financial advisors can use to make informed decisions for their clients. Whether it's identifying risk levels, monitoring transaction patterns, or providing tax-related information, iDeFi.AI offers a comprehensive solution that makes understanding blockchain data simple and effective.
+            Our AI-driven insights transform complex blockchain data into actionable recommendations that financial advisors can use to make informed decisions for their clients. Whether it be identifying risk levels, monitoring transaction patterns, or providing tax-related information, iDeFi.AI offers a comprehensive solution that makes understanding blockchain data simple and effective.
           </p>
         </div>
       </div>
@@ -221,6 +221,5 @@ const FinancialAdvisorPage: React.FC = () => {
   );
 };
 
-interface FinancialAdvisorPageProps {}
 
 export default FinancialAdvisorPage;
