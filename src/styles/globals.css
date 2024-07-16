@@ -130,7 +130,9 @@ form {
   background-color: white;
   border: 3px solid transparent;
   font-size: 12px;
+  margin-top: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
   border-radius: 12px;
   font-weight: 600;
   height: 60px;
@@ -141,6 +143,25 @@ form {
   border-color: #913d88; /* border color only visible on hover */
 }
 
+.github-signin-button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  color: black;
+  background-color: white;
+  border: 3px solid transparent;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
+  height: 60px;
+  width: 330px;
+}
+
+.github-signin-button:hover {
+  border-color: #913d88; /* border color only visible on hover */
+}
 
 .container {
   max-width: 1200px; /*set your desired width*/

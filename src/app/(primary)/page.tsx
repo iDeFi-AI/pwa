@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { useRef } from 'react'
-import { signInWithGoogle, signInWithEmailPassword, createAccountWithEmailPassword } from '../../utilities/firebaseClient';
+import { signInWithGoogle, signInWithEmailPassword, createAccountWithEmailPassword, signInWithGithub } from '../../utilities/firebaseClient';
 
 export default function HomePage() {
   const [email, setEmail] = useState("");
@@ -85,6 +85,25 @@ export default function HomePage() {
     }
   }
 
+  const handleGithubSignIn = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      const result = await signInWithGithub();
+  
+      var user = result.user;
+      if(user){
+        try {
+          const idToken = await user.getIdToken(true);
+          console.log('Token: ', idToken);
+          window.location.href = '/dataroom';
+        } catch(error) {
+          console.log('Error retrieving token', error);
+        }
+      } 
+    } catch(error: any) {
+      console.error("Error signing in with Google", error.message);
+    }
+  }
+
   return (
     <main>
   <Head>
@@ -92,10 +111,10 @@ export default function HomePage() {
   </Head>
   <section className='bg-black'>
     <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-      <Image src='/cube.gif' alt="Company Logo" width={300} height={100} />
-      <h1 className='mt-4 text-white'> iDeFi.ai</h1>
+      <Image src='/cube.gif' alt="Company Logo" width={150} height={100} />
+      <h1 className='mt-4 text-white'>iDeFi.AI</h1>
       <p className='mt-2 text-sm text-white-800'>
-        Decentralized Artifical Intelligent Startup
+        A New Era of Financial Security and Literacy
       </p>
       <br></br>
       <hr style={{border: 'none', borderBottom: '3px solid grey', width: '100%'}} />
@@ -132,9 +151,9 @@ export default function HomePage() {
       </form>
       <div className="google-signin-button">
         <button onClick={(evt) => { 
-          evt.preventDefault(); // prevent the page from reload
-          handleGoogleSignIn(evt);
-        }}>
+            evt.preventDefault(); // prevent the page from reload
+            handleGoogleSignIn(evt);
+          }}>
           <Image 
             src='/google_logo.png' 
             alt='Google logo'
@@ -144,9 +163,22 @@ export default function HomePage() {
           <span>Sign In with Google</span>
         </button>
       </div>
+      <div className="github-signin-button">
+        <button onClick={(evt) => { 
+            evt.preventDefault(); // prevent the page from reload
+            handleGithubSignIn(evt);
+          }}>
+          <Image 
+            src='/github_logo.png' 
+            alt='Github logo'
+            width={25} 
+            height={25} 
+          />
+          <span>Sign In with Github</span>
+        </button>
+      </div>
     </div>
   </section>
 </main>
-
   )
 }

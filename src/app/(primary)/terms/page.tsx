@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 interface SectionProps {
   title: string;
@@ -9,7 +8,7 @@ interface SectionProps {
   imageAlt?: string;
 }
 
-const terms: React.FC = () => {
+const Terms: React.FC = () => {
   const sections: SectionProps[] = [
     {
       title: 'Terms of Service',
@@ -34,24 +33,24 @@ const terms: React.FC = () => {
         'By using this website, you acknowledge that you have read, understood, and agreed to this disclosure.',
       ],
     },
-    // Add more sections as needed
   ];
 
   return (
-    <div>
-      <div className="container header">
+    <div className="bg-gray-100 text-black min-h-screen p-6">
+      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         {sections.map((section, index) => (
-          <div className="container header section" key={index}>
-           
-            <h2>{section.title}</h2>
-            <h4>{section.intro}</h4>
-            
-            <br></br>
-            {section.paragraphs.map((paragraph, pIndex) => (
-              <p key={pIndex} className="section-paragraph">
-                {paragraph}
-              </p>
-            ))}
+          <div key={index} className="mb-12">
+            <h2 className="text-3xl font-bold mb-4">{section.title}</h2>
+            <h4 className="text-xl mb-4">{section.intro}</h4>
+            {section.paragraphs && (
+              <div className="text-base text-gray-700">
+                {section.paragraphs.map((paragraph, pIndex) => (
+                  <p key={pIndex} className="mb-4">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -59,4 +58,4 @@ const terms: React.FC = () => {
   );
 };
 
-export default terms;
+export default Terms;

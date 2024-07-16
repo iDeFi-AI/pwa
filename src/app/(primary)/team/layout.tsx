@@ -5,8 +5,8 @@ import Footer from '@/components/layouts/Footer'
 import Header from '@/components/layouts/Header'
 
 export const metadata: Metadata = {
-  title: 'Meet the Team',
-  description: 'Please remember, you are underneath an NDA',
+  title: 'iDeFi.AI Team',
+  description: 'Learn more about the team behind iDeFi.AI',
 }
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

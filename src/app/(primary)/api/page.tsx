@@ -15,7 +15,6 @@ const ApiOverviewPage: React.FC = () => {
     {
       title: 'Welcome to iDeFi.ai API Suite',
       content: 'Explore the innovative world of iDeFi.ai API, where blockchain and AI converge to shape the future of decentralized finance.',
-      imageUrl: '/api_overview.gif',
       imageAlt: 'API Overview',
     },
     {

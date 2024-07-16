@@ -1,6 +1,6 @@
 // firebaseClient.ts
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, GithubAuthProvider } from 'firebase/auth';
 import { getDatabase, ref, push, onValue } from 'firebase/database';
 
 interface Transaction {
@@ -31,13 +31,16 @@ const config = {
 
 const app = initializeApp(config);
 const auth = getAuth();
-const provider = new GoogleAuthProvider();
+// Providers
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
+
+// Sign-in functions
+const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+const signInWithGithub = () => signInWithPopup(auth, githubProvider);
 
 const database = getDatabase(app);
 
-const signInWithGoogle = () => {
-  return signInWithPopup(auth, provider);
-};
 
 const signInWithEmailPassword = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);
@@ -98,6 +101,7 @@ export {
   ref,
   onValue,
   signInWithGoogle,
+  signInWithGithub,
   signInWithEmailPassword,
   createAccountWithEmailPassword,
   pushTransaction,

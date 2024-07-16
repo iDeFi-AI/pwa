@@ -15,8 +15,8 @@ const menuItems = [
   { label: `B1H0`, url: `b1h0` },
   { label: `TEAM`, url: `team` },
   { label: `QUANTUM`, url: `quantum`},
-  { label: 'Log out', url: '/' },
-  {label: 'Launch App', url: 'dapp'}
+  {label: 'Launch App', url: 'dapp'},
+  { label: 'Log out', url: '/' }
 ];
 
 const NavMenu: React.FC<NavMenuProps> = ({}) => {
