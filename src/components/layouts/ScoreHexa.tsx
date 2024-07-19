@@ -61,7 +61,7 @@ const HexagonScore: React.FC<HexagonScoreProps> = ({ seed, generatedScore }) => 
   return (
     <div className={`hexagon-container ${color}`}>
       <div className="hexagon-poc">
-        <span className="score" style={{ color: 'white', fontSize: '4vw' }}>
+        <span className="score" style={{ color: 'black', fontSize: '4vw' }}>
           {currentScore !== null ? currentScore : 'Score'}
         </span>
         {currentScore !== null && (

@@ -231,7 +231,7 @@ const DApp: React.FC = () => {
       <Head>
         <title>dAPP - iDAC</title>
       </Head>
-      <section className="bg-black">
+      <section className="bg-white">
         <div className="layout flex min-h-screen flex-col items-center justify-center py-12 text-center">
           <h1 className="text-white font-bold text-4xl mb-6">dAPP - iDAC</h1>
           <h4>Connect wallet or enter address</h4>
@@ -246,7 +246,7 @@ const DApp: React.FC = () => {
             }}
           />
           <div className="image-container" style={{ padding: '50px' }}>
-            <Image src="/newidaclogo.png" alt="idacscore" width={1600} height={1000} />
+            <Image src="/darkidac.png" alt="idacscore" width={1600} height={1000} />
           </div>
           {generatedScore !== null && (
             <div className={` ${getColorForScore(generatedScore)}`}>
@@ -257,7 +257,7 @@ const DApp: React.FC = () => {
           <button
             onClick={connectWallet}
             style={{
-              backgroundColor: '#913d88',
+              backgroundColor: '#ff9f66',
               color: 'white',
               fontWeight: '300',
               margin: '10px',
@@ -270,7 +270,7 @@ const DApp: React.FC = () => {
           <button
             onClick={handleGenerateScore}
             style={{
-              backgroundColor: '#913d88',
+              backgroundColor: '#ff9f66',
               color: 'white',
               fontWeight: '300',
               margin: '10px',

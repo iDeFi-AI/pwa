@@ -15,11 +15,11 @@ export const CodeTerminal: React.FC<CodeTerminalProps> = ({ children }) => {
     <div
       id='App:CodeTerminal'
       style={{
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         padding: '1em',
         borderRadius: '5px',
         borderColor: '#913d88',
-        color: '#fff',
+        color: '#000',
         whiteSpace: 'pre-wrap', // Allow text to wrap
         wordWrap: 'break-word', // Break words that are too long
       }}

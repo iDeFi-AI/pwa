@@ -10,12 +10,12 @@ interface SectionProps {
   imageAlt?: string;
 }
 
-const DataroomPage: React.FC = () => {
+const Home: React.FC = () => {
   const sections: SectionProps[] = [
     {
       title: 'Welcome to iDeFi.AI',
       content: '',
-      imageUrl: '/dbroom.gif',
+      imageUrl: '/home.gif',
       imageAlt: 'Company Logo',
     },
     {
@@ -87,7 +87,7 @@ const DataroomPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-white text-white min-h-screen">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         {sections.map((section, index) => (
           <div className="section" key={index}>
@@ -108,7 +108,7 @@ const DataroomPage: React.FC = () => {
             {section.paragraphs && (
               <div>
                 {section.paragraphs.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="mb-4 text-lightlaven">
+                  <p key={pIndex} className="mb-4 text-neorange">
                     {paragraph}
                   </p>
                 ))}
@@ -133,12 +133,12 @@ const DataroomPage: React.FC = () => {
 
         <div className="mt-12 text-center">
           <Link href="https://api.idefi.ai">
-            <button className="text-lightlaven hover:text-white">iDeFi.ai API</button>
+            <button className="text-neorange hover:text-black">iDeFi.ai API</button>
           </Link>
         </div>
         <div className="mt-4 text-center">
           <Link href="https://q.idefi.ai">
-            <button className="text-lightlaven hover:text-white">QiDeFi.AI</button>
+            <button className="text-neorange hover:text-black">QiDeFi.AI</button>
           </Link>
         </div>
       </div>
@@ -146,4 +146,4 @@ const DataroomPage: React.FC = () => {
   );
 };
 
-export default DataroomPage;
+export default Home;

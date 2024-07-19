@@ -6,7 +6,7 @@ const QuantumTechPage: React.FC = () => {
   const sections = [
     {
       subtitle: 'Revolutionizing finance with cutting-edge quantum technology and artificial intelligence.',
-      imageUrl: '/qcat.png',
+      imageUrl: '/quantum.gif',
       imageAlt: 'Quantum Technology',
     },
     {
@@ -36,10 +36,9 @@ const QuantumTechPage: React.FC = () => {
   ];
 
   return (
-    <div className="container min-h-screen py-12 px-4 bg-black sm:px-6 lg:px-8">
+    <div className="container min-h-screen py-12 px-4 bg-white sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
-          <h2 className="text-base text-lightlaven font-semibold tracking-wide uppercase">Quantum Suite</h2>
           <p className="text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
             Welcome to QiDeFi.AI
           </p>
@@ -52,21 +51,19 @@ const QuantumTechPage: React.FC = () => {
           {sections.map((section, index) => (
             <div key={index} className="relative mb-10 text-center">
               {section.imageUrl && (
-                <div className="mt-4 flex justify-center">
+                <div className="image-container mt-4 flex justify-center">
                   <Image
                     src={section.imageUrl}
                     alt={section.imageAlt}
                     width={400}
                     height={400}
-                    layout="responsive"
-                    objectFit="cover"
                     className="rounded-md"
                   />
                 </div>
               )}
               <div className="mt-6">
                 {section.title && (
-                  <h3 className="text-white text-lg leading-6 font-medium">{section.title}</h3>
+                  <h3 className="text-neorange text-lg leading-6 font-medium">{section.title}</h3>
                 )}
                 <p className="mt-2 text-base text-gray-400">{section.description}</p>
               </div>
@@ -76,7 +73,7 @@ const QuantumTechPage: React.FC = () => {
 
         <div className="mt-12 text-center">
           <Link href="https://q.idefi.ai">
-            <span className="text-lightlaven hover:text-white cursor-pointer">Visit QiDeFi.AI</span>
+            <span className="text-neorange hover:text-black cursor-pointer">Visit QiDeFi.AI</span>
           </Link>
         </div>
       </div>

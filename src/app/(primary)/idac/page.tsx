@@ -102,7 +102,7 @@ const IDAC: React.FC = () => {
 
   const sections: SectionProps[] = [
     {
-      imageUrl: "/newidaclogo.png"
+      imageUrl: "/darkidac.png"
     },
     {
       title: "Digital Asset Crypto Score",

@@ -32,7 +32,7 @@ export default function HomePage() {
           try {
             const idToken = await user.getIdToken(true);
             console.log('Token: ', idToken);
-            window.location.href = '/dataroom';
+            window.location.href = '/home';
           } catch(error) {
             console.log('Error retrieving token', error);
           }
@@ -55,7 +55,7 @@ export default function HomePage() {
           try {
             const idToken = await user.getIdToken(true);
             console.log('Token: ', idToken);
-            window.location.href = '/dataroom';
+            window.location.href = '/home';
           } catch(error) {
             console.log('Error retrieving token', error);
           }
@@ -75,7 +75,7 @@ export default function HomePage() {
         try {
           const idToken = await user.getIdToken(true);
           console.log('Token: ', idToken);
-          window.location.href = '/dataroom';
+          window.location.href = '/home';
         } catch(error) {
           console.log('Error retrieving token', error);
         }
@@ -94,7 +94,7 @@ export default function HomePage() {
         try {
           const idToken = await user.getIdToken(true);
           console.log('Token: ', idToken);
-          window.location.href = '/dataroom';
+          window.location.href = '/home';
         } catch(error) {
           console.log('Error retrieving token', error);
         }
@@ -109,10 +109,10 @@ export default function HomePage() {
   <Head>
     <title>iDeFi.ai</title>
   </Head>
-  <section className='bg-black'>
+  <section className='bg-white'>
     <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
       <Image src='/cube.gif' alt="Company Logo" width={150} height={100} />
-      <h1 className='mt-4 text-white'>iDeFi.AI</h1>
+      <h1 className='mt-4 text-black'>iDeFi.AI</h1>
       <p className='mt-2 text-sm text-white-800'>
         A New Era of Financial Security and Literacy
       </p>
@@ -122,15 +122,15 @@ export default function HomePage() {
         evt.preventDefault(); // prevent the page reload
         handleSignIn(evt);
       }}>
-        <h3 style={{fontWeight: 'bold'}}>Access the Data Room</h3>
+        <h3 style={{fontWeight: 'bold', color: 'black'}}>Access the Data Room</h3>
         <br />
-        <div style={{marginBottom: '1rem'}}>
+        <div style={{marginBottom: '1rem', color: 'black'}}>
           <label style={{display: 'block', marginBottom: '0.25rem'}}>
             Email:
           </label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        <div style={{marginBottom: '1rem'}}>
+        <div style={{marginBottom: '1rem', color: 'black'}}>
           <label style={{display: 'block', marginBottom: '0.25rem'}}>
             Password:
           </label>

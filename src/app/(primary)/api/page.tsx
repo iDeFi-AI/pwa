@@ -13,9 +13,9 @@ interface SectionProps {
 const ApiOverviewPage: React.FC = () => {
   const sections: SectionProps[] = [
     {
-      title: 'Welcome to iDeFi.ai API Suite',
-      content: 'Explore the innovative world of iDeFi.ai API, where blockchain and AI converge to shape the future of decentralized finance.',
-      imageAlt: 'API Overview',
+      title: '',
+      content: '',
+      imageAlt: '',
     },
     {
       title: 'API Capabilities',

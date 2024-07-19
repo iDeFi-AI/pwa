@@ -3,23 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255; /* Now text will be white */
-  --background-start-rgb: 0, 0, 0; /* Start of background gradient is black */
-  --background-end-rgb: 0, 0, 0; /* End of background gradient is also black */
-  --description-color: #d3d3d3; /* For light grey color in descriptions */
+  --foreground-rgb: 0, 0, 0; /* Now text will be black */
+  --background-start-rgb: 255, 255, 255; /* Start of background gradient is white */
+  --background-end-rgb: 255, 255, 255; /* End of background gradient is also white */
+  --description-color: #4a4a4a; /* For dark grey color in descriptions */
+  --link-color: #ff9f66; /* Neon orange color for links */
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: white) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --description-color: #d3d3d3;
+    --link-color: #ff9f66;
   }
 }
 
 @font-face {
-  font-family: 'Goldman';
-  src: url('Goldman-Regular.ttf') format('truetype');
+  font-family: 'Oxanium';
+  src: url('Oxanium-VariableFont_wght.ttf') format('truetype');
   /* Add other font formats if needed */
   font-weight: normal;
   font-style: normal;
@@ -28,7 +31,7 @@
 html, body {
   padding: 0;
   margin: 0;
-  font-family: 'Goldman', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: 'Oxanium', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
@@ -54,13 +57,12 @@ h4 {
 }
 
 a {
- /* ... existing styles ... */
- color: #913d88;  /* Making links white */
+  color: var(--link-color);  /* Neon orange color for links */
+  text-decoration: none;
 }
 
 a:hover {
- /* ... existing styles ... */
- color: #ffffff; ; /* Keeping the color change on hover */
+  color: #ff5733; /* Lighter neon orange on hover */
 }
 
 img {
@@ -76,7 +78,7 @@ input[type=email], input[type=password] {
   width: 250px; /* width of the input field */
   border-radius: 15px; 
   font-weight: 600;
-  color:#913d88;
+  color: var(--link-color); /* Neon orange text color */
 }
 
 input[type=email], input[type=password] {
@@ -90,7 +92,7 @@ input[type=text] {
 
 p {
   margin-bottom: .5rem; /* spacing below each paragraph element */
-  color: #913d88; 
+  color: var(--link-color); /* Neon orange text color */
   font-weight: 600;
   font-size: 16px; 
 }
@@ -100,12 +102,12 @@ form {
 }
 
 .button { 
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: var(--link-color); /* Neon orange background color */
 }
 .neon-button {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: var(--link-color); /* Neon orange background color */
   padding: 15px 32px;
   border: 3px solid transparent; /* initially the border is transparent */
   font-size: 12px;
@@ -118,7 +120,7 @@ form {
 }
 
 .neon-button:hover {
-  border-color: #913d88; /* border color only visible on hover */
+  border-color: #ff9f66; /* border color only visible on hover */
 }
 
 .google-signin-button button {
@@ -126,8 +128,8 @@ form {
   align-items: center;
   justify-content: center;
   gap: 10px; 
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: lightgrey; /* Neon orange background color */
   border: 3px solid transparent;
   font-size: 12px;
   margin-top: 10px;
@@ -140,7 +142,7 @@ form {
 }
 
 .google-signin-button:hover {
-  border-color: #913d88; /* border color only visible on hover */
+  border-color: #ff9f66; /* border color only visible on hover */
 }
 
 .github-signin-button button {
@@ -148,8 +150,8 @@ form {
   align-items: center;
   justify-content: center;
   gap: 10px; 
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: lightgrey; /* Neon orange background color */
   border: 3px solid transparent;
   font-size: 12px;
   cursor: pointer;
@@ -160,7 +162,7 @@ form {
 }
 
 .github-signin-button:hover {
-  border-color: #913d88; /* border color only visible on hover */
+  border-color: #ff9f66; /* border color only visible on hover */
 }
 
 .container {
@@ -170,7 +172,6 @@ form {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 50px;
-  
 }
 
 .image-container {
@@ -184,11 +185,10 @@ form {
 
 .section {
   margin-bottom: 20px;
-  
 }
 
 .section-paragraph {
-  color: #913d88; /* Desired paragraph text color */
+  color: var(--link-color); /* Neon orange color */
   padding-bottom: 20px;
   padding-top: 20px;
 }
@@ -206,7 +206,7 @@ form {
 }
 
 .team-member {
-  background-color: #b9b9b9;
+  background-color: #f9f9f9;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -230,7 +230,7 @@ form {
 
 .team-member p {
   font-size: 1rem;
-  color: #a0aec0;
+  color: var(--description-color); /* Dark grey color */
 }
 
 .team-description {
@@ -239,24 +239,24 @@ form {
   overflow-y: auto;
   text-align: left;
   padding: 10px;
-  background-color: #c5c5c5;
+  background-color: #f0f0f0;
   border-radius: 5px;
 }
 
 .bg-gray-900 {
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .text-white {
-  color: #ffffff;
+  color: #000000;
 }
 
 .text-gray-400 {
-  color: #cbd5e0;
+  color: #4a4a4a;
 }
 
 .text-gray-200 {
-  color: #e2e8f0;
+  color: #666666;
 }
 
 /* Add these styles to your existing CSS file or styles component */
@@ -282,12 +282,12 @@ form {
   position: relative;
   font-size: 24px;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   border-radius: 10px;
   text-align: center;
   overflow: hidden;
   background-color: transparent;
-  border: 4px solid #ffffff;
+  border: 4px solid #000000;
   margin-bottom: 50px;
 }
 
@@ -389,7 +389,7 @@ form {
 .address {
   font-weight: bold;
   font-size: 10px;
-  color: white;
+  color: black;
   text-decoration: underline;
   position: absolute;
   margin-top: 50px;

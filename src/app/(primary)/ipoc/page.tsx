@@ -6,7 +6,7 @@ const FigmaVideo = () => (
   <div style={{ position: 'relative', paddingBottom: '125%', height: 0, overflow: 'hidden' }}>
     <iframe
       style={{
-        border: '4px solid #913d88',
+        border: '4px solid #ff9f66',
         width: '100%',
         height: '100%',
         position: 'absolute',
@@ -25,7 +25,7 @@ const YouTubeVideo = () => (
   <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
     <iframe
       allowFullScreen
-      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#ff9f66' }}
       src="https://www.youtube.com/embed/9ly8VacW-qY?si=-TFXtuPL_toyLnaY"
     ></iframe>
   </div>
@@ -35,7 +35,7 @@ const YouTubeVideo2 = () => (
   <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
     <iframe
       allowFullScreen
-      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#ff9f66' }}
       src="https://www.youtube.com/embed/lIpgfnMMCcw?si=8dlWYmfbNoZI0KrJ"
     ></iframe>
   </div>
@@ -45,7 +45,7 @@ const YouTubeVideo3 = () => (
   <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
     <iframe
       allowFullScreen
-      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#ff9f66' }}
       src="https://www.youtube.com/embed/oLH52dC8vPU?si=Bg4l8c_5xm3ILbHt"
     ></iframe>
   </div>
@@ -55,7 +55,7 @@ const YouTubeVideo4 = () => (
   <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
     <iframe
       allowFullScreen
-      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#913d88' }}
+      style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', border: 'solid', borderRadius: '20px', borderColor: '#ff9f66' }}
       src="https://www.youtube.com/embed/SyG0uLmq5-A?si=ScNSt6oNJXULA-F0"
     ></iframe>
   </div>
