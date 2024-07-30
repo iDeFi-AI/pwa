@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import * as React from 'react'
 import Header from '@/components/layouts/Header'
 import Footer from '@/components/layouts/Footer'
-
+import { Analytics } from "@vercel/analytics/react"
 import '@/styles/globals.css'
 
 import { siteConfig } from '@/constants/config'
@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className='py-8'>
         {children}
+        <Analytics />
         </div>
       </body>
       <Footer/>
