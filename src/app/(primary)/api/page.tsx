@@ -77,15 +77,8 @@ const ApiOverviewPage: React.FC = () => {
             {index !== 0 && <br />}
             {section.paragraphs && (
               <div>
-                {section.paragraphs.map((paragraph, pIndex) => (
+                {section.paragraphs.map((pIndex) => (
                   <p key={pIndex} className="mb-4">
-                    {paragraph.includes('http') ? (
-                      <Link href={paragraph.match(/https?:\/\/[^\s]+/g)![0]} target="_blank" className="text-purple-450 underline hover:underline">
-                        {paragraph.replace(/https?:\/\/[^\s]+/g, '').trim()}
-                      </Link>
-                    ) : (
-                      paragraph
-                    )}
                   </p>
                 ))}
               </div>
@@ -108,6 +101,11 @@ const ApiOverviewPage: React.FC = () => {
           </div>
         ))}
       </div>
+      <div className="mt-4 text-center">
+          <Link href="https://api.idefi.ai">
+            <button className="text-neorange hover:text-black">API iDeFi.AI</button>
+          </Link>
+        </div>
     </div>
   );
 };

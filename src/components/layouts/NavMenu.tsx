@@ -16,7 +16,6 @@ const menuItems = [
   { label: `TEAM`, url: `team` },
   { label: `QUANTUM`, url: `quantum`},
   {label: 'Launch App', url: 'dapp'},
-  { label: 'Log out', url: '/' }
 ];
 
 const NavMenu: React.FC<NavMenuProps> = ({}) => {
@@ -27,7 +26,7 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
-        setIsScrolled(false);
+        setIsScrolled(true);
       }
     };
 

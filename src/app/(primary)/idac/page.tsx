@@ -180,7 +180,7 @@ const IDAC: React.FC = () => {
               <>
                 <div className="image-container container header">
                   <Image
-                    src='/newidaclogo.png'
+                    src='/idacscore.png'
                     alt='idacscore'
                     width={1600}
                     height={1000}

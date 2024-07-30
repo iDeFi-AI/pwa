@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import * as React from 'react'
+import Header from '@/components/layouts/Header'
+import Footer from '@/components/layouts/Footer'
 
 import '@/styles/globals.css'
 
@@ -24,7 +26,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body>{children}</body>
+      <Header/>
+      <body>
+        <div className='py-8'>
+        {children}
+        </div>
+      </body>
+      <Footer/>
     </html>
   )
 }

@@ -1,184 +1,149 @@
-'use client'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import Head from 'next/head'
-import { useState } from 'react'
-import Image from 'next/image'
-import { useEffect } from 'react'
-import { useRef } from 'react'
-import { signInWithGoogle, signInWithEmailPassword, createAccountWithEmailPassword, signInWithGithub } from '../../utilities/firebaseClient';
+interface SectionProps {
+  title: string;
+  content: string;
+  paragraphs?: string[]; // Use "?" to make paragraphs optional
+  imageUrl?: string;
+  imageAlt?: string;
+}
 
-export default function HomePage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    }
-  }, []);
-  
-
-  const handleSignUp = async (event: React.FormEvent) => {
-    event.preventDefault();
-  
-    if (mounted.current) {
-      try {
-        const userCredential = await createAccountWithEmailPassword(email, password);
-        var user = userCredential.user;
-  
-        if(user){
-          try {
-            const idToken = await user.getIdToken(true);
-            console.log('Token: ', idToken);
-            window.location.href = '/home';
-          } catch(error) {
-            console.log('Error retrieving token', error);
-          }
-        } 
-      } catch(error: any) {
-        console.error("Error signing up with email and password", error.message);
-      }
-    }
-  }
-
-  const handleSignIn = async (event: React.FormEvent) => {
-    event.preventDefault();
-    
-    if (mounted.current) {
-      try {
-        const userCredential = await signInWithEmailPassword(email, password);
-        var user = userCredential.user;
-    
-        if(user){
-          try {
-            const idToken = await user.getIdToken(true);
-            console.log('Token: ', idToken);
-            window.location.href = '/home';
-          } catch(error) {
-            console.log('Error retrieving token', error);
-          }
-        }   
-      } catch(error: any) {
-        console.error("Error signing in with email and password", error.message);
-      }
-    }
-  }
-
-  const handleGoogleSignIn = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    try {
-      const result = await signInWithGoogle();
-  
-      var user = result.user;
-      if(user){
-        try {
-          const idToken = await user.getIdToken(true);
-          console.log('Token: ', idToken);
-          window.location.href = '/home';
-        } catch(error) {
-          console.log('Error retrieving token', error);
-        }
-      } 
-    } catch(error: any) {
-      console.error("Error signing in with Google", error.message);
-    }
-  }
-
-  const handleGithubSignIn = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    try {
-      const result = await signInWithGithub();
-  
-      var user = result.user;
-      if(user){
-        try {
-          const idToken = await user.getIdToken(true);
-          console.log('Token: ', idToken);
-          window.location.href = '/home';
-        } catch(error) {
-          console.log('Error retrieving token', error);
-        }
-      } 
-    } catch(error: any) {
-      console.error("Error signing in with Google", error.message);
-    }
-  }
+const Home: React.FC = () => {
+  const sections: SectionProps[] = [
+    {
+      title: 'Welcome to iDeFi.AI',
+      content: '',
+      imageUrl: '/home.gif',
+      imageAlt: 'Company Logo',
+    },
+    {
+      title: 'Overview of iDeFi.ai',
+      content: 'Welcome to the innovative world of iDeFi.ai, where blockchain technology and artificial intelligence converge to shape the future of decentralized finance (DeFi).',
+      paragraphs: [
+        'Our vision is to revolutionize the financial landscape by harnessing the power of cutting-edge technology. Through the fusion of blockchain, artificial intelligence, and Quantum Technologies, we are paving the way for a more inclusive and efficient financial ecosystem.',
+        'At iDeFi.ai, we are committed to enhancing security within the DeFi space. Our innovative solutions are designed to minimize fraud, reduce risks, and provide users with a safe environment to manage their digital assets.',
+        'Join us on this exciting journey into the future of finance, where smart contracts, decentralized applications, and AI-driven insights will become the norm. Together, we are shaping the path for a more accessible and interconnected financial world.',
+      ],
+    },
+    {
+      title: 'Our Mission',
+      content: 'At iDeFi.ai, our mission is to create a financial ecosystem that prioritizes security, efficiency, and inclusivity. We believe that the synergy between AI and blockchain is the foundation upon which the future of DeFi is built.',
+      paragraphs: [
+        'Our mission represents a commitment to a new era of financial services. We envision a future where anyone, regardless of their background or geographic location, can participate in the global financial system.',
+        'Security is paramount in the decentralized world. Our dedication to building a secure environment means that users can have confidence in their financial transactions. By leveraging the power of AI and blockchain, we are paving the way for robust security measures that can withstand the challenges of the digital age.',
+        'Inclusivity is a core value we hold dear. We aim to break down barriers and make financial services accessible to everyone. By embracing blockchains transparency and AIs adaptability, we are creating an ecosystem that welcomes users from all walks of life. This inclusivity is what makes iDeFi.ai stand out in the world of DeFi.',
+      ],
+    },
+    {
+      title: 'Core Objectives',
+      content: 'Our core objectives include democratizing finance, making cryptocurrency accessible to traditional financial institutions, and reshaping the financial landscape using advanced AI techniques.',
+      paragraphs: [
+        'Democratizing finance means we are championing financial empowerment for all. We believe in breaking the chains of traditional banking and giving control back to individuals. With blockchain and AI, we are eliminating intermediaries and enabling peer-to-peer financial interactions.',
+        'Our goal of making cryptocurrency accessible to traditional financial institutions marks the convergence of two worlds. We are bridging the gap between innovative blockchain technologies and the established financial industry. This bridge facilitates the seamless flow of assets and ideas, bringing the best of both worlds together.',
+        'The financial landscape is undergoing a profound transformation, and we are at the forefront of it. Our utilization of advanced AI techniques means that our solutions are constantly evolving and improving. With this dynamic approach, we are shaping the financial future by incorporating AI-driven insights into DeFi applications and smart contracts.',
+      ],
+    },
+    {
+      title: 'Our Commitment',
+      content: 'iDeFi.ai is at the forefront of the DeFi revolution. Our commitment to user-friendliness, robust security measures, and AI-driven solutions positions us as a trailblazer in the decentralized finance sector.',
+      paragraphs: [
+        'Being at the forefront of the DeFi revolution means we are the driving force behind the transformation of financial services. Our commitment to staying ahead of the curve is unwavering. We are setting the standard for what DeFi can and should be.',
+        'User-friendliness is a key aspect of our commitment. We understand that DeFi can be complex, and we are making it as user-friendly as possible. Our user-centric approach ensures that anyone, regardless of their technical expertise, can seamlessly navigate and benefit from our platform.',
+        'Robust security measures are the foundation of trust. Our commitment to security is not just a promise; its an ongoing process. We continuously refine and enhance our security protocols to provide users with peace of mind and protect their digital assets.',
+        'AI-driven solutions represent the future of DeFi. We believe that AI can revolutionize how financial systems operate. By integrating AI capabilities into our applications and smart contracts, we are setting the stage for a new era of efficiency and innovation in the DeFi sector.',
+      ],
+    },
+    {
+      title: 'Key Initiatives',
+      content: 'Explore the key initiatives being built and tested at iDeFi.ai. Access real-time transaction data, AI-driven insights, and more to secure and optimize your financial operations.',
+      paragraphs: [
+        'B1H0 - B1ack H0rnet: Our innovative tool for infiltrating mixers and tumblers within the cryptocurrency ecosystem, designed for intelligent data mining and resourceful intelligence extraction.',
+        'iDAC - Digital Risk Scoring: Our revolutionary trust algorithm that reshapes risk assessment in DeFi while accommodating traditional financial institutions (TradFi) and centralized financial exchanges (CeFi).',
+        'AI Insights: Our AI-driven solutions provide unparalleled insights into cryptocurrency transactions, enabling intelligent transaction analysis, seamless integration with the iDAC Score, and empowering financial decision-making.',
+        'AI Threat Detection: Our state-of-the-art AI Threat Detection system revolutionizes decentralized finance (DeFi) security, reshaping standards for traditional financial institutions (TradFi) and centralized financial exchanges (CeFi).',
+      ],
+    },
+    {
+      title: 'API Suite',
+      content: 'Our API suite provides access to real-time transaction data, AI-driven insights, and more to secure and optimize your financial operations.',
+      paragraphs: [
+        'The iDeFi.ai API suite allows developers to integrate advanced blockchain analytics, AI-driven insights, and real-time monitoring into their applications.',
+        'Access endpoints for risk scoring, transaction analysis, compliance monitoring, and more, enabling you to build secure and intelligent financial applications.',
+        'Our API documentation and developer resources provide all the information you need to get started quickly and efficiently.',
+      ],
+    },
+    {
+      title: 'Quantum Suite',
+      content: 'Explore the potential of quantum technology in finance with QiDeFi.AI.',
+      paragraphs: [
+        'Leveraging the power of quantum computing to solve complex financial problems and optimize transactions.',
+        'Harnessing artificial intelligence to provide actionable insights and predictive analytics for smart contract transactions.',
+        'Real-time monitoring and analysis of on-chain data to ensure security and efficiency in all financial transactions.',
+        'Ensuring robust security measures and compliance with industry standards to protect user data and transactions.',
+      ],
+    },
+  ];
 
   return (
-    <main>
-  <Head>
-    <title>iDeFi.ai</title>
-  </Head>
-  <section className='bg-white'>
-    <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-      <Image src='/cube.gif' alt="Company Logo" width={150} height={100} />
-      <h1 className='mt-4 text-black'>iDeFi.AI</h1>
-      <p className='mt-2 text-sm text-white-800'>
-        A New Era of Financial Security and Literacy
-      </p>
-      <br></br>
-      <hr style={{border: 'none', borderBottom: '3px solid grey', width: '100%'}} />
-      <form onSubmit={(evt) => { 
-        evt.preventDefault(); // prevent the page reload
-        handleSignIn(evt);
-      }}>
-        <h3 style={{fontWeight: 'bold', color: 'black'}}>Access the Data Room</h3>
-        <br />
-        <div style={{marginBottom: '1rem', color: 'black'}}>
-          <label style={{display: 'block', marginBottom: '0.25rem'}}>
-            Email:
-          </label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div style={{marginBottom: '1rem', color: 'black'}}>
-          <label style={{display: 'block', marginBottom: '0.25rem'}}>
-            Password:
-          </label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <br />
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-            <button type='button' onClick={(evt) => { 
-              evt.preventDefault(); // prevent the page reload
-              handleSignUp(evt);
-            }} className="neon-button">
-              Sign Up
-            </button> 
-            <input type='submit' value='Sign In' className="neon-button" />
+    <div className="bg-white text-white min-h-screen">
+      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        {sections.map((section, index) => (
+          <div className="section" key={index}>
+            <h2>{section.title}</h2>
+            <h4>{section.content}</h4>
+            {index !== 0 && ( // Add this condition to exclude line break in the first section
+              <br />
+            )}
+            {section.title === 'Welcome to iDeFi.AI' && ( // Check if this is the specific section
+              <p>
+                {' '}
+                <Link 
+                  href="/terms"
+                  className="text-purple-450 underline hover:underline">Review our Educational and Ethical Disclosure 
+                </Link>{' '}
+              </p>
+            )}
+            {section.paragraphs && (
+              <div>
+                {section.paragraphs.map((paragraph, pIndex) => (
+                  <p key={pIndex} className="mb-4 text-neorange">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            )}
+            {section.imageUrl && (
+              <div className="mt-4">
+                <Image
+                  layout="responsive"
+                  objectFit="cover"
+                  width={200}
+                  height={300}
+                  src={section.imageUrl}
+                  alt={section.imageAlt ?? section.title}
+                  className="rounded-md"
+                />
+              </div>
+            )}
+            {index !== 0 && <hr className="my-12 border-t-2 border-gray-700 w-full" />}
           </div>
+        ))}
+
+        <div className="mt-12 text-center">
+          <Link href="https://api.idefi.ai">
+            <button className="text-neorange hover:text-black">iDeFi.ai API</button>
+          </Link>
         </div>
-      </form>
-      <div className="google-signin-button">
-        <button onClick={(evt) => { 
-            evt.preventDefault(); // prevent the page from reload
-            handleGoogleSignIn(evt);
-          }}>
-          <Image 
-            src='/google_logo.png' 
-            alt='Google logo'
-            width={25} 
-            height={25} 
-          />
-          <span>Sign In with Google</span>
-        </button>
-      </div>
-      <div className="github-signin-button">
-        <button onClick={(evt) => { 
-            evt.preventDefault(); // prevent the page from reload
-            handleGithubSignIn(evt);
-          }}>
-          <Image 
-            src='/github_logo.png' 
-            alt='Github logo'
-            width={25} 
-            height={25} 
-          />
-          <span>Sign In with Github</span>
-        </button>
+        <div className="mt-4 text-center">
+          <Link href="https://q.idefi.ai">
+            <button className="text-neorange hover:text-black">QiDeFi.AI</button>
+          </Link>
+        </div>
       </div>
     </div>
-  </section>
-</main>
-  )
-}
+  );
+};
+
+export default Home;

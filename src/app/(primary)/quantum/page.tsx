@@ -27,7 +27,7 @@ const QuantumTechPage: React.FC = () => {
     },
     {
       title: 'Accessing Key Initiatives on API Suite',
-      description: 'Explore the key initiatives being built and tested at https://q.idefi.ai. Access real-time transaction data, AI-driven insights, and more to secure and optimize your financial operations.',
+      description: 'Explore the key initiatives being built and tested at q.idefi.ai. Access real-time transaction data, AI-driven insights, and more to secure and optimize your financial operations.',
     },
     {
       title: 'Collaboration with Partners',
