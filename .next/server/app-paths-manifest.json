@@ -1,8 +1,0 @@
-{
-  "/(primary)/team/page": "app/(primary)/team/page.js",
-  "/(primary)/quantum/page": "app/(primary)/quantum/page.js",
-  "/(primary)/idac/page": "app/(primary)/idac/page.js",
-  "/(primary)/home/page": "app/(primary)/home/page.js",
-  "/(primary)/terms/page": "app/(primary)/terms/page.js",
-  "/(primary)/dapp/page": "app/(primary)/dapp/page.js"
-}

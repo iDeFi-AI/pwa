@@ -1,33 +1,31 @@
+// NavMenu.tsx
+
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import NextImage from 'next/image';
 import Link from 'next/link';
-
 import LogoImage from '@/assets/imgs/logo.png';
-
 import HeaderNavLink from '../links/HeaderNavLink';
 
 const menuItems = [
-  { label: `API`, url: `api`},
-  { label: `POC`, url: `ipoc` },
-  { label: `iDAC`, url: `idac` },
-  { label: `B1H0`, url: `b1h0` },
-  { label: `TEAM`, url: `team` },
-  { label: `QUANTUM`, url: `quantum`},
-  {label: 'Launch App', url: 'dapp'},
+  { label: `API`, url: `/api` },
+  { label: `POC`, url: `/ipoc` },
+  { label: `iDAC`, url: `/idac` },
+  { label: `B1H0`, url: `/b1h0` },
+  { label: `TEAM`, url: `/team` },
+  { label: `QUANTUM`, url: `/quantum` },
+  { label: 'Launch App', url: '/dapp' },
 ];
 
-const NavMenu: React.FC<NavMenuProps> = ({}) => {
+const NavMenu: React.FC<NavMenuProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(true);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -49,7 +47,7 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                     <NextImage
                       className='h-8 w-auto'
                       src={LogoImage}
-                      alt=''
+                      alt='Logo'
                       width={210}
                       height={125}
                     />
@@ -74,7 +72,6 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
               </div>
               <div className='flex items-center lg:hidden'>
                 <Disclosure.Button className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neorange'>
-                  <span className='absolute -inset-0.5' />
                   <span className='sr-only'>Open main menu</span>
                   {open ? (
                     <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -83,15 +80,13 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='flex ml-4 lg:flex lg:items-center'></div>
             </div>
           </div>
 
           <Disclosure.Panel className='lg:hidden'>
             <div className='flex flex-col items-center space-y-2 py-3'>
-              {menuItems.map((item) => {
-                return (
-                  <Link href={item.url} key={item.label}>
+              {menuItems.map((item) => (
+                <Link href={item.url} key={item.label}>
                   <div className='block py-2 text-base font-medium text-gray-600 hover:text-neorange'>
                     {item.label === 'Launch App' ? (
                       <button className='text-white bg-neorange px-3 py-2 rounded-full'>
@@ -102,8 +97,7 @@ const NavMenu: React.FC<NavMenuProps> = ({}) => {
                     )}
                   </div>
                 </Link>
-                );
-              })}
+              ))}
             </div>
           </Disclosure.Panel>
         </>
