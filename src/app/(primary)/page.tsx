@@ -111,7 +111,7 @@ const Home: React.FC = () => {
               </p>
             )}
             {section.paragraphs && (
-              <div className="text-left text-neorange mb-8">
+              <div className="text-center text-neorange mb-8">
                 {section.paragraphs.map((paragraph, pIndex) => (
                   <p key={pIndex} className="mb-4">
                     {paragraph}
