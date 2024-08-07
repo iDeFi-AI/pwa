@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface TeamMember {
   imgSrc: string;
@@ -31,7 +30,7 @@ const teamMembers: TeamMember[] = [
     imgSrc: "/team.gif",
     name: "01010011 01010011",
     role: "CFO",
-    description: "Team Member 3 is the Chief Financial Officer of iDeFi.ai, overseeing all financial operations and strategies. With over 15 years of experience in financial management and strategic planning, they have successfully led multiple high-growth companies through complex financial landscapes. Their expertise includes financial forecasting, budgeting, mergers and acquisitions, and risk management. Known for their analytical prowess and strategic mindset, Team Member 3 has been instrumental in driving the company's financial growth and stability. They hold an MBA from Harvard Business School and are a certified public accountant (CPA).",
+    description: "Team Member 3 is the Chief Financial Officer and Founder of iDeFi.ai, a technology startup specializing in AI, WEB3, Crypto, DeFi, and Blockchain. With extensive experience in financial management, market research, and strategy within technology companies, Shawn brings industry expertise in computer hardware, software, SaaS, digital media, and blockchain DeFi. He is particularly interested in early-stage hi-tech start-ups in Southern California. His specialties include financial management and strategy, market research, and marketing strategy. His skills encompass financial reporting, GAAP, cash management, sales, new business development, marketing, technical accounting, cost accounting, lean manufacturing, six sigma, venture capital, and private equity. Shawn is a graduate of the University of San Diego School of Business Administration and holds a Professional Skills Program Certificate in Business Administration and Management.",
     links: {
       linkedin: "https://www.linkedin.com/in/shawn-saucier/",
     },
@@ -40,7 +39,7 @@ const teamMembers: TeamMember[] = [
     imgSrc: "/team.gif",
     name: "01001011 01001101",
     role: "CTO",
-    description: "Team Member 4 is the Chief Technology Officer of iDeFi.ai, responsible for the technological vision and execution of the company's roadmap. With a strong background in computer science and engineering, they have led the development of cutting-edge technologies and innovative solutions in the AI and blockchain space. Team Member 4 has a proven track record of building scalable and secure systems, and has spearheaded several high-profile projects that have significantly advanced the company's technical capabilities. They hold a Ph.D. in Computer Science from MIT and have been recognized for their contributions to the field of artificial intelligence and blockchain technology.",
+    description: "Team Member 4 is the Chief Technology Officer of iDeFi.ai, responsible for the technological vision and execution of the company's roadmap. A self-taught expert in hacking and full-stack web development, k3y10 has transitioned into a dynamic technical leader with over eight years of experience. He has spearheaded innovations in cryptography, blockchain technology, quantum laser communication, and embedded AI software. His journey began in cybersecurity and software development, bootstrapping platforms and security teams for startups across various funding stages. k3y10's unique skill set surpasses that of a typical computer science graduate, and he continues to lead groundbreaking efforts at the forefront of technology.",
     links: {
       linkedin: "https://www.linkedin.com/in/k3yton",
     },
