@@ -17,7 +17,7 @@ const menuItems = [
   { label: `B1H0`, url: `/b1h0` },
   { label: `TEAM`, url: `/team` },
   { label: `QUANTUM`, url: `/quantum` },
-  { label: 'Launch App', url: '/dapp' },
+  { label: 'DEMO', url: '/dapp' },
 ];
 
 const NavMenu: React.FC<NavMenuProps> = () => {
@@ -88,8 +88,8 @@ const NavMenu: React.FC<NavMenuProps> = () => {
               {menuItems.map((item) => (
                 <Link href={item.url} key={item.label}>
                   <div className='block py-2 text-base font-medium text-gray-600 hover:text-neorange'>
-                    {item.label === 'Launch App' ? (
-                      <button className='text-white bg-neorange px-3 py-2 rounded-full'>
+                    {item.label === 'DEMO' ? (
+                      <button className='text-white bg-neorange hover:bg-neohover px-3 py-2 rounded-full'>
                         {item.label}
                       </button>
                     ) : (

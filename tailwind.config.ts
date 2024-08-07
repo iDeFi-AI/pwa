@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         neorange: '#ff9f66',
+        neohover:'#fd9346',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

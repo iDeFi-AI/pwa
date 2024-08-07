@@ -229,13 +229,13 @@ const DApp: React.FC = () => {
   return (
     <div className="main-container">
       <Head>
-        <title>dAPP - iDAC</title>
+        <title>DEMO</title>
       </Head>
       <section className="bg-white">
         <div className="layout flex min-h-screen flex-col items-center justify-center py-12 text-center">
-          <h1 className="text-white font-bold text-4xl mb-6">dAPP - iDAC</h1>
+          <h1 className="text-white font-bold text-4xl mb-6">PUBLIC DEMO</h1>
           <h4>Connect wallet or enter address</h4>
-          <p>Generate iDAC Trust Score with DeFi-AI</p>
+          <p>Generate Your iDeFi.AI Trust Score</p>
           <hr
             style={{
               border: 'none',
