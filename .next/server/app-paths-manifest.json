@@ -1,5 +1,0 @@
-{
-  "/(primary)/page": "app/(primary)/page.js",
-  "/(primary)/api/page": "app/(primary)/api/page.js",
-  "/(primary)/dapp/page": "app/(primary)/dapp/page.js"
-}
